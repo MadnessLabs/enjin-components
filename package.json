@@ -1,5 +1,5 @@
 {
-  "name": "@madness-labs/enjin-components",
+  "name": "@madnesslabs/enjin-components",
   "version": "0.0.1",
   "description": "A set of components to make it easier to build apps",
   "module": "dist/esm/index.js",
