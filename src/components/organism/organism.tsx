@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Element, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'enjin-organism',
@@ -6,6 +6,7 @@ import { Component, Prop, State } from '@stencil/core';
   shadow: true
 })
 export class Organism {
+  @Element() organismEl: HTMLEnjinOrganismElement;
   /**
    * The name of the organism
    */
@@ -30,12 +31,27 @@ export class Organism {
      */
     description: string;
   }[] = [];
-
+  
+  /**
+   * The fame HTML element
+   */
+  @State() frameEl: HTMLElement;
   /**
    * Is the frame in fullscreen mode?
    */
   @State()
   fullscreenMode = false;
+  /**
+   * The current size of the frame
+   */
+  @State()
+  frameSize: {
+    height: number,
+    width: number
+  } = {
+    height: 0,
+    width: 0
+  };
 
   /**
    * Toggle the frame to fullscreen and back to 320px
@@ -43,6 +59,29 @@ export class Organism {
   resizeToggle(event) {
     event.preventDefault();
     this.fullscreenMode = !this.fullscreenMode;
+    setTimeout(() => {
+      this.updateFrameSize();
+    }, 10);
+  }
+
+  /**
+   * Update the frameSize from height and width of the frame
+   */
+  updateFrameSize() {
+    if (this.frameSize.height === this.frameEl.clientHeight && this.frameSize.width === this.frameEl.clientWidth) {
+      return false;
+    }
+    this.frameSize = {
+      height: this.frameEl.clientHeight,
+      width: this.frameEl.clientWidth
+    };
+  }
+
+  componentDidLoad() {
+    this.frameEl = this.organismEl.shadowRoot.querySelector('.frame');
+    setInterval(() => {
+      this.updateFrameSize();
+    }, 1000);
   }
 
   render() {
@@ -63,7 +102,8 @@ export class Organism {
           <div class="frame">
             <slot />
             <a href="#" class="resize-button" onClick={event => this.resizeToggle(event)}>
-              {this.fullscreenMode ? '➡️' : '↔️' }️
+              <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
+              <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
             </a>
           </div>
         </div>
