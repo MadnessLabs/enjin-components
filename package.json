@@ -1,0 +1,33 @@
+{
+  "name": "@madness-labs/enjin-components",
+  "version": "0.0.1",
+  "description": "A set of components to make it easier to build apps",
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@stencil/core": "~0.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madnesslabs/enjin-components.git"
+  },
+  "author": "Madness Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madnesslabs/enjin-components/issues"
+  },
+  "homepage": "https://github.com/madnesslabs/enjin-components"
+}

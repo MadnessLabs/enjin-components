@@ -1,0 +1,6 @@
+node_modules/
+.stencil/
+.github/
+www/
+.editorconfig
+.gitignore
