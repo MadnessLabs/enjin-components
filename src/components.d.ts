@@ -37,6 +37,14 @@ export namespace Components {
       */
       description: string;
     }[];
+    /**
+    * Shrink organism to only show name and description
+    */
+    'viewLess': () => Promise<void>;
+    /**
+    * Expand organism to show preview frame and props info
+    */
+    'viewMore': () => Promise<void>;
   }
   interface EnjinOrganismAttributes extends StencilHTMLAttributes {
     /**

@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State } from '@stencil/core';
+import { Component, Method, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'enjin-organism',
@@ -6,7 +6,10 @@ import { Component, Element, Prop, State } from '@stencil/core';
   shadow: true
 })
 export class Organism {
-  @Element() organismEl: HTMLEnjinOrganismElement;
+  /**
+   * An interval loop to watch the frame size
+   */
+  frameWatcher: NodeJS.Timer;
   /**
    * The name of the organism
    */
@@ -42,6 +45,11 @@ export class Organism {
   @State()
   fullscreenMode = false;
   /**
+   * Is the frame in synopsis Mode?
+   */
+  @State()
+  synopsisMode = true;
+  /**
    * The current size of the frame
    */
   @State()
@@ -54,7 +62,25 @@ export class Organism {
   };
 
   /**
-   * Toggle the frame to fullscreen and back to 320px
+   * Expand organism to show preview frame and props info
+   */
+  @Method()
+  async viewMore() {
+    this.synopsisMode = false;
+    this.startFrameWatcher();
+  }
+
+  /**
+   * Shrink organism to only show name and description
+   */
+  @Method()
+  async viewLess() {
+    this.synopsisMode = true;
+    this.stopFrameWatcher();
+  }
+
+  /**
+   * Toggle the frame to fullscreen and back to responsive
    */
   resizeToggle(event) {
     event.preventDefault();
@@ -77,17 +103,29 @@ export class Organism {
     };
   }
 
-  componentDidLoad() {
-    this.frameEl = this.organismEl.shadowRoot.querySelector('.frame');
-    setInterval(() => {
+  /**
+   * Start a set interval loop to watch the frame size
+   */
+  startFrameWatcher() {
+    this.updateFrameSize();
+    this.frameWatcher = setInterval(() => {
       this.updateFrameSize();
-    }, 1000);
+    }, 300);
+  }
+
+  /**
+   * Stop frame size watcher
+   */
+  stopFrameWatcher() {
+    clearInterval(this.frameWatcher);
   }
 
   render() {
     return (
-      <div class={this.fullscreenMode ? "flex-grid fullscreen" : "flex-grid"}>
+      <div class={this.synopsisMode ? 'synopsis' : this.fullscreenMode ? "flex-grid fullscreen" : "flex-grid"}>
         <div class="col info">
+          <a href="#" class="more-button" onClick={() => this.viewMore()}>More</a>
+          <a href="#" class="less-button" onClick={() => this.viewLess()}>Less</a>
           <h2>{this.name}</h2>
           {this.description ? <p>{this.description}</p> : null}
           <ul>
@@ -98,14 +136,14 @@ export class Organism {
             ))}
           </ul>
         </div>
-        <div class="col">
-          <div class="frame">
+        <div class="col tools">
+          <div class="frame" ref={(el: HTMLElement) =>  this.frameEl = el}>
             <slot />
           </div>
           <a href="#" class="resize-button" onClick={event => this.resizeToggle(event)}>
-            <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
-            <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
-          </a>
+              <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
+              <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
+            </a>
         </div>
       </div>
     );

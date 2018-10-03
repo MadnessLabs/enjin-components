@@ -40,33 +40,67 @@
   margin: 0 auto;
   border: var(--frame-border-width, 1px) var(--frame-border-style, solid) var(--frame-border-color, #cccccc);
   max-height: var(--frame-max-height, 640px);
-  transition: width 1s ease;
   overflow-y: auto;
   resize: both;
 }
 
 .fullscreen .frame {
+  resize: none;
   width: 100% !important;
   border-left: 0;
   border-right: 0;
+  transition: width 1s ease;
 }
 
-a.resize-button {
+.resize-button {
   padding: 2px 15px;
   font-size: 11px;
   margin: 0 auto;
   display: block;
   width: 150px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--organism-font-family, inherit);
   text-decoration: none;
-  color: #333333;
-  background-color: #ececec;
-  border-radius: 0 0 5px 5px;
+  color: var(--organism-button-color, var(--organism-color, inherit));
+  background-color:  var(--organism-button-background-color, #ececec);
+  border-radius: 0 0 var(--organism-border-radius, 5px) var(--organism-border-radius, 5px);
 }
 
-a.resize-button b {
+.resize-button b {
   padding-left: 8px;
   float: right;
+}
+
+.more-button, .less-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  text-decoration: none;
+  font-family: var(--organism-font-family, inherit);
+  padding: 15px;
+  color: var(--organism-button-color, var(--organism-color, inherit));
+  text-align: center;
+  border-radius: var(--organism-border-radius, 5px);
+  background-color: var(--organism-button-background-color, #ececec);
+}
+
+.more-button {
+  display: none;
+}
+
+.synopsis .more-button {
+  display: inline-block;
+}
+
+.synopsis .less-button {
+  display: none;
+}
+
+.synopsis .info ul {
+  display: none;
+}
+
+.synopsis .tools {
+  display: none;
 }
 
 @media (max-width: 600px) {
