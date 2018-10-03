@@ -39,7 +39,8 @@
   width: var(--frame-width, 320px);
   margin: 0 auto;
   border: var(--frame-border-width, 1px) var(--frame-border-style, solid) var(--frame-border-color, #cccccc);
-  max-height: 640px;
+  max-height: var(--frame-max-height, 640px);
+  transition: width 1s ease;
   overflow-y: auto;
   resize: both;
 }
@@ -51,21 +52,21 @@
 }
 
 a.resize-button {
-  position: sticky;
-  bottom: 0px;
-  right: 0px;
-  float: right;
   padding: 2px 15px;
   font-size: 11px;
+  margin: 0 auto;
+  display: block;
+  width: 150px;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 5px 0 0 0;
+  color: #333333;
+  background-color: #ececec;
+  border-radius: 0 0 5px 5px;
 }
 
 a.resize-button b {
   padding-left: 8px;
+  float: right;
 }
 
 @media (max-width: 600px) {

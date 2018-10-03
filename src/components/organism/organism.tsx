@@ -101,11 +101,11 @@ export class Organism {
         <div class="col">
           <div class="frame">
             <slot />
-            <a href="#" class="resize-button" onClick={event => this.resizeToggle(event)}>
-              <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
-              <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
-            </a>
           </div>
+          <a href="#" class="resize-button" onClick={event => this.resizeToggle(event)}>
+            <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
+            <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
+          </a>
         </div>
       </div>
     );
