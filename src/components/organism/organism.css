@@ -39,6 +39,7 @@
   width: var(--frame-width, 320px);
   margin: 0 auto;
   border: var(--frame-border-width, 1px) var(--frame-border-style, solid) var(--frame-border-color, #cccccc);
+  min-height: var(--frame-min-height, auto);
   max-height: var(--frame-max-height, 640px);
   overflow-y: auto;
   resize: both;
@@ -105,7 +106,7 @@
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .flex-grid {
     display: block !important;
   }
