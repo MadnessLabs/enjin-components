@@ -1,4 +1,4 @@
-import { Component, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'enjin-organism',
@@ -6,6 +6,7 @@ import { Component, Method, Prop, State } from '@stencil/core';
   shadow: true
 })
 export class Organism {
+  @Element() organismEl: HTMLEnjinOrganismElement;
   /**
    * An interval loop to watch the frame size
    */
@@ -62,12 +63,27 @@ export class Organism {
   };
 
   /**
+   * Listen for hash change and show everything is hash is #all
+   */
+  @Listen('window:hashchange')
+  onhashchange() {
+    if (window.location.hash === '#all') {
+      this.viewMore();
+    }
+  }
+
+  /**
    * Expand organism to show preview frame and props info
    */
   @Method()
-  async viewMore() {
+  async viewMore(options = {scrollIntoView: true}) {
     this.synopsisMode = false;
     this.startFrameWatcher();
+    if (options.scrollIntoView) {
+      setTimeout(() => {
+        this.organismEl.scrollIntoView();
+      }, 100);
+    }
   }
 
   /**
@@ -120,12 +136,53 @@ export class Organism {
     clearInterval(this.frameWatcher);
   }
 
+  /**
+   * Use the name of the the organism to create an element id
+   */
+  getElementIdFromName() {
+    return this.name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/ig,'')
+      .trim()
+      .replace(/\s+/g, '-');
+  }
+
+  componentDidLoad() {
+    //                                 /
+    //                       __       //
+    //                       -\~,\=\ //
+    //                     --=_\=---//=
+    //                   -_ =/  \/ //\/
+    //                   _,~/   |_   _|\,
+    //      __          ,/_/    \' | `/_
+    //     //\\          /       | | |\_
+    //    /(\ _\________/        (,_,)`
+    //   J(\_/                       \
+    //  ,)\/     v                \   |
+    //  / Y      (         Y       | /J
+    // (7 |       \        |       '/ \
+    // '| (       /\_______\_     _Y_  \
+    //  'Y \     / \     7   \   /   \  \
+    //  ',) (   /   )   /    |  /    (  )
+    //    '~(  )   / __/     i J     / /    -Anna Eklund-
+    //      \  /   \ \       | |   _/ /
+    //      | |     )_\_     )_\_/__\/
+    //      /_\     |___\    |___\
+    //     (___)
+    this.organismEl.id = this.getElementIdFromName();
+    if (`#${this.organismEl.id}` === window.location.hash || window.location.hash === '#all') {
+      this.viewMore({
+        scrollIntoView: !(window.location.hash === '#all')
+      });
+    }
+  }
+
   render() {
     return (
       <div class={this.synopsisMode ? 'synopsis' : this.fullscreenMode ? "flex-grid fullscreen" : "flex-grid"}>
         <div class="col info">
-          <a href="#" class="more-button" onClick={() => this.viewMore()}>More</a>
-          <a href="#" class="less-button" onClick={() => this.viewLess()}>Less</a>
+          <a href={`#${this.getElementIdFromName()}`} class="more-button" onClick={() => this.viewMore()}>More</a>
+          <a href="javascript:void(0)" class="less-button" onClick={() => this.viewLess()}>Less</a>
           <h2>{this.name}</h2>
           {this.description ? <p>{this.description}</p> : null}
           <ul>
@@ -140,7 +197,7 @@ export class Organism {
           <div class="frame" ref={(el: HTMLElement) =>  this.frameEl = el}>
             <slot />
           </div>
-          <a href="#" class="resize-button" onClick={event => this.resizeToggle(event)}>
+          <a href="javascript:void(0)" class="resize-button" onClick={event => this.resizeToggle(event)}>
               <span>{this.frameSize.width}px X {this.frameSize.height}px</span>
               <b>{this.fullscreenMode ? '[shrink]' : '[EXPAND]' }️</b>
             </a>

@@ -71,9 +71,7 @@
 }
 
 .more-button, .less-button {
-  position: absolute;
-  top: 30px;
-  right: 30px;
+  float: right;
   text-decoration: none;
   font-family: var(--organism-font-family, inherit);
   padding: 15px;
@@ -85,6 +83,10 @@
 
 .more-button {
   display: none;
+}
+
+.tools {
+  position: relative;
 }
 
 .synopsis .more-button {

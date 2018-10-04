@@ -44,7 +44,7 @@ export namespace Components {
     /**
     * Expand organism to show preview frame and props info
     */
-    'viewMore': () => Promise<void>;
+    'viewMore': (options?: { scrollIntoView: boolean; }) => Promise<void>;
   }
   interface EnjinOrganismAttributes extends StencilHTMLAttributes {
     /**
