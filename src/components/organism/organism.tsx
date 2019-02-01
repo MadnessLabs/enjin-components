@@ -10,7 +10,7 @@ export class Organism {
   /**
    * An interval loop to watch the frame size
    */
-  frameWatcher: NodeJS.Timer;
+  frameWatcher: any;
   /**
    * The name of the organism
    */
