@@ -1,6 +1,6 @@
 {
   "name": "@madnesslabs/enjin-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A set of components to make it easier to build apps",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
