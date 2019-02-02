@@ -70,6 +70,11 @@ export namespace Components {
     }[];
   }
 
+  interface EnjinStarRating {}
+  interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
+    'onEnjinStarRating'?: (event: CustomEvent) => void;
+  }
+
   interface EnjinTestComponent {}
   interface EnjinTestComponentAttributes extends StencilHTMLAttributes {}
 }
@@ -78,12 +83,14 @@ declare global {
   interface StencilElementInterfaces {
     'EnjinGallery': Components.EnjinGallery;
     'EnjinOrganism': Components.EnjinOrganism;
+    'EnjinStarRating': Components.EnjinStarRating;
     'EnjinTestComponent': Components.EnjinTestComponent;
   }
 
   interface StencilIntrinsicElements {
     'enjin-gallery': Components.EnjinGalleryAttributes;
     'enjin-organism': Components.EnjinOrganismAttributes;
+    'enjin-star-rating': Components.EnjinStarRatingAttributes;
     'enjin-test-component': Components.EnjinTestComponentAttributes;
   }
 
@@ -100,6 +107,12 @@ declare global {
     new (): HTMLEnjinOrganismElement;
   };
 
+  interface HTMLEnjinStarRatingElement extends Components.EnjinStarRating, HTMLStencilElement {}
+  var HTMLEnjinStarRatingElement: {
+    prototype: HTMLEnjinStarRatingElement;
+    new (): HTMLEnjinStarRatingElement;
+  };
+
   interface HTMLEnjinTestComponentElement extends Components.EnjinTestComponent, HTMLStencilElement {}
   var HTMLEnjinTestComponentElement: {
     prototype: HTMLEnjinTestComponentElement;
@@ -109,12 +122,14 @@ declare global {
   interface HTMLElementTagNameMap {
     'enjin-gallery': HTMLEnjinGalleryElement
     'enjin-organism': HTMLEnjinOrganismElement
+    'enjin-star-rating': HTMLEnjinStarRatingElement
     'enjin-test-component': HTMLEnjinTestComponentElement
   }
 
   interface ElementTagNameMap {
     'enjin-gallery': HTMLEnjinGalleryElement;
     'enjin-organism': HTMLEnjinOrganismElement;
+    'enjin-star-rating': HTMLEnjinStarRatingElement;
     'enjin-test-component': HTMLEnjinTestComponentElement;
   }
 

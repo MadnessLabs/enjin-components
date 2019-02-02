@@ -1,0 +1,34 @@
+enjin-star-rating {
+    --star-rating-default: #ccc;
+    --star-rating-active: #f90;
+    --star-rating-hover: #fc0;
+    --star-rating-size: 30px;
+}
+
+.star-rating {
+    display:flex;
+    flex-direction: row-reverse;
+    font-size: var(--star-rating-size);
+    justify-content:space-around;
+    padding:0 .2em;
+    text-align:center;
+    width:5em;
+}
+
+.star-rating input {
+    display:none;
+}
+  
+.star-rating label {
+    color: var(--star-rating-default);
+    cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+    color: var(--star-rating-active);
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--star-rating-hover);
+}
