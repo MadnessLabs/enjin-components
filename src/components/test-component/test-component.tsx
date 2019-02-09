@@ -1,5 +1,6 @@
 import { Component } from '@stencil/core';
 
+import Tunnel from '../../data/message';
 
 @Component({
     tag: 'enjin-test-component'
@@ -7,40 +8,13 @@ import { Component } from '@stencil/core';
 export class TestComponent {
     render() {
         return (
-            <div>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-            </div>
+            <Tunnel.Consumer>
+                {({ message, increment }) => (
+                    <div>
+                        <p onClick={increment}>{message}</p>
+                    </div>
+                )}
+            </Tunnel.Consumer>
         );
     }
 }

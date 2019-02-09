@@ -7,13 +7,17 @@
 
 import '@stencil/core';
 
-
+import '@stencil/state-tunnel';
 
 
 export namespace Components {
 
-  interface EnjinGallery {}
-  interface EnjinGalleryAttributes extends StencilHTMLAttributes {}
+  interface EnjinGallery {
+    'intro': string;
+  }
+  interface EnjinGalleryAttributes extends StencilHTMLAttributes {
+    'intro'?: string;
+  }
 
   interface EnjinOrganism {
     /**
