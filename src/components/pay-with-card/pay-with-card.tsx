@@ -1,4 +1,4 @@
-import { Component, Listen, State } from "@stencil/core";
+import { Component, Listen, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "enjin-pay-with-card",
@@ -6,6 +6,8 @@ import { Component, Listen, State } from "@stencil/core";
 })
 export class PayWithCard {
   stripe: stripe.Stripe;
+
+  @Prop() stripeKey: string;
 
   @State() card: stripe.elements.Element;
   @State() error: string;
@@ -24,23 +26,31 @@ export class PayWithCard {
   }
 
   componentDidLoad() {
-    this.stripe = Stripe("pk_test_G6ksY0dKXlgogvnitD0Wm1oc");
+    if (this.stripeKey) {
+        this.initializeStripeElements();
+    } else {
+        alert('Please provide a Stripe key!');
+    }
+  }
+
+  initializeStripeElements() {
+    this.stripe = Stripe(this.stripeKey);
     const elements = this.stripe.elements();
     const style: any = {
-      base: {
+    base: {
         color: "#32325d",
         lineHeight: "18px",
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-          color: "#aab7c4"
+        color: "#aab7c4"
         }
-      },
-      invalid: {
+    },
+    invalid: {
         color: "#fa755a",
         iconColor: "#fa755a"
-      }
+    }
     };
 
     this.card = elements.create('card', style);

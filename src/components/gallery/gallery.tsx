@@ -18,7 +18,7 @@ export class Gallery {
         description="Take card payments with Stripe"
         propList={[]}
       >
-        <enjin-pay-with-card />
+        <enjin-pay-with-card stripeKey="pk_test_G6ksY0dKXlgogvnitD0Wm1oc" />
       </enjin-organism>, 
       <enjin-organism
         name="Star Rating"

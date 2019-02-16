@@ -70,8 +70,12 @@ export namespace Components {
     }[];
   }
 
-  interface EnjinPayWithCard {}
-  interface EnjinPayWithCardAttributes extends StencilHTMLAttributes {}
+  interface EnjinPayWithCard {
+    'stripeKey': string;
+  }
+  interface EnjinPayWithCardAttributes extends StencilHTMLAttributes {
+    'stripeKey'?: string;
+  }
 
   interface EnjinStarRating {}
   interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
