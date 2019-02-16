@@ -16,7 +16,12 @@ export class Gallery {
       <enjin-organism
         name="Pay with Card"
         description="A Stripe Elements card component"
-        propList={[]}
+        propList={[
+          {
+            name: 'stripeKey',
+            description: 'The publishable Stripe key for the account you want to use'
+          }
+        ]}
       >
         <enjin-pay-with-card stripeKey="pk_test_G6ksY0dKXlgogvnitD0Wm1oc" />
       </enjin-organism>, 
