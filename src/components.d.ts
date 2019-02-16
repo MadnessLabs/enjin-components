@@ -70,6 +70,9 @@ export namespace Components {
     }[];
   }
 
+  interface EnjinPayWithCard {}
+  interface EnjinPayWithCardAttributes extends StencilHTMLAttributes {}
+
   interface EnjinStarRating {}
   interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
     'onEnjinStarRating'?: (event: CustomEvent) => void;
@@ -83,6 +86,7 @@ declare global {
   interface StencilElementInterfaces {
     'EnjinGallery': Components.EnjinGallery;
     'EnjinOrganism': Components.EnjinOrganism;
+    'EnjinPayWithCard': Components.EnjinPayWithCard;
     'EnjinStarRating': Components.EnjinStarRating;
     'EnjinTestComponent': Components.EnjinTestComponent;
   }
@@ -90,6 +94,7 @@ declare global {
   interface StencilIntrinsicElements {
     'enjin-gallery': Components.EnjinGalleryAttributes;
     'enjin-organism': Components.EnjinOrganismAttributes;
+    'enjin-pay-with-card': Components.EnjinPayWithCardAttributes;
     'enjin-star-rating': Components.EnjinStarRatingAttributes;
     'enjin-test-component': Components.EnjinTestComponentAttributes;
   }
@@ -107,6 +112,12 @@ declare global {
     new (): HTMLEnjinOrganismElement;
   };
 
+  interface HTMLEnjinPayWithCardElement extends Components.EnjinPayWithCard, HTMLStencilElement {}
+  var HTMLEnjinPayWithCardElement: {
+    prototype: HTMLEnjinPayWithCardElement;
+    new (): HTMLEnjinPayWithCardElement;
+  };
+
   interface HTMLEnjinStarRatingElement extends Components.EnjinStarRating, HTMLStencilElement {}
   var HTMLEnjinStarRatingElement: {
     prototype: HTMLEnjinStarRatingElement;
@@ -122,6 +133,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'enjin-gallery': HTMLEnjinGalleryElement
     'enjin-organism': HTMLEnjinOrganismElement
+    'enjin-pay-with-card': HTMLEnjinPayWithCardElement
     'enjin-star-rating': HTMLEnjinStarRatingElement
     'enjin-test-component': HTMLEnjinTestComponentElement
   }
@@ -129,6 +141,7 @@ declare global {
   interface ElementTagNameMap {
     'enjin-gallery': HTMLEnjinGalleryElement;
     'enjin-organism': HTMLEnjinOrganismElement;
+    'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
     'enjin-star-rating': HTMLEnjinStarRatingElement;
     'enjin-test-component': HTMLEnjinTestComponentElement;
   }

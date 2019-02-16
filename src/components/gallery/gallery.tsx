@@ -14,6 +14,13 @@ export class Gallery {
   render() {
     return [
       <enjin-organism
+        name="Pay with Card"
+        description="Take card payments with Stripe"
+        propList={[]}
+      >
+        <enjin-pay-with-card />
+      </enjin-organism>, 
+      <enjin-organism
         name="Star Rating"
         description="A simple 5 star rating component"
         propList={[]}
