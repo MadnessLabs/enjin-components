@@ -24,30 +24,29 @@ export class PayWithCard {
   }
 
   componentDidLoad() {
-    this.stripe = Stripe("pk_test_G6ksY0dKXlgogvnitD0Wm1oc");
+    this.stripe = Stripe('pk_test_G6ksY0dKXlgogvnitD0Wm1oc');
     const elements = this.stripe.elements();
-    const style: any = {
-      base: {
-        color: "#32325d",
-        lineHeight: "18px",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#aab7c4"
+    const style = {
+        base: {
+          color: '#32325d',
+          lineHeight: '18px',
+          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+          fontSmoothing: 'antialiased',
+          fontSize: '16px',
+          '::placeholder': {
+            color: '#aab7c4'
+          }
+        },
+        invalid: {
+          color: '#fa755a',
+          iconColor: '#fa755a'
         }
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    };
+      };
 
-    this.card = elements.create('card', style);
+    this.card = elements.create('card', {style: style});
     this.card.mount('#card-element');
-
-    (this.card as any).addEventListener('change', (event) => {
-        this.error = event.error ? event.error.message : '';
+    this.card.on('change', (event) => {
+       this.error = event.error ? event.error.message : null;
     });
   }
 
