@@ -15,7 +15,7 @@ export class Gallery {
     return [
       <enjin-organism
         name="Pay with Card"
-        description="Take card payments with Stripe"
+        description="A Stripe Elements card component"
         propList={[]}
       >
         <enjin-pay-with-card stripeKey="pk_test_G6ksY0dKXlgogvnitD0Wm1oc" />

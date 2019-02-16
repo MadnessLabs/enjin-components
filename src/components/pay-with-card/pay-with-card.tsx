@@ -12,11 +12,11 @@ export class PayWithCard {
   @State() card: stripe.elements.Element;
   @State() error: string;
 
-  @Listen('submit')
+  @Listen("submit")
   onFormSubmit(event) {
     event.preventDefault();
 
-    this.stripe.createToken(this.card).then((result) => {
+    this.stripe.createToken(this.card).then(result => {
       if (result.error) {
         this.error = result.error.message;
       } else {
@@ -27,9 +27,9 @@ export class PayWithCard {
 
   componentDidLoad() {
     if (this.stripeKey) {
-        this.initializeStripeElements();
+      this.initializeStripeElements();
     } else {
-        alert('Please provide a Stripe key!');
+      alert("Please provide a Stripe key!");
     }
   }
 
@@ -37,27 +37,26 @@ export class PayWithCard {
     this.stripe = Stripe(this.stripeKey);
     const elements = this.stripe.elements();
     const style: any = {
-    base: {
+      base: {
         color: "#32325d",
         lineHeight: "18px",
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-        color: "#aab7c4"
+          color: "#aab7c4"
         }
-    },
-    invalid: {
+      },
+      invalid: {
         color: "#fa755a",
         iconColor: "#fa755a"
-    }
+      }
     };
 
-    this.card = elements.create('card', style);
-    this.card.mount('#card-element');
-
-    (this.card as any).addEventListener('change', (event) => {
-        this.error = event.error ? event.error.message : '';
+    this.card = elements.create("card", { style: style });
+    this.card.mount("#card-element");
+    this.card.on("change", event => {
+      this.error = event.error ? event.error.message : null;
     });
   }
 
