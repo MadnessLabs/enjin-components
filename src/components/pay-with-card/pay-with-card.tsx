@@ -1,4 +1,4 @@
-import { Component, Listen, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Listen, Prop, State } from "@stencil/core";
 
 @Component({
   tag: "enjin-pay-with-card",
@@ -6,6 +6,8 @@ import { Component, Listen, Prop, State } from "@stencil/core";
 })
 export class PayWithCard {
   stripe: stripe.Stripe;
+
+  @Event() enjinCardSubmit: EventEmitter;
 
   @Prop() stripeKey: string;
 
@@ -20,7 +22,7 @@ export class PayWithCard {
       if (result.error) {
         this.error = result.error.message;
       } else {
-        console.log(result.token);
+        this.enjinCardSubmit.emit({event, token: result.token});
       }
     });
   }
