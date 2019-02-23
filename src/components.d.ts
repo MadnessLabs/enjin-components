@@ -74,6 +74,7 @@ export namespace Components {
     'stripeKey': string;
   }
   interface EnjinPayWithCardAttributes extends StencilHTMLAttributes {
+    'onEnjinCardSubmit'?: (event: CustomEvent) => void;
     'stripeKey'?: string;
   }
 
