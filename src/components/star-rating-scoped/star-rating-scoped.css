@@ -1,4 +1,4 @@
-.star-rating {
+:host {
   --star-rating-default: #ccc;
   --star-rating-active: #f90;
   --star-rating-hover: #fc0;
@@ -16,18 +16,18 @@
   );
 }
 
-.star-rating input {
+:host input {
   display: none;
 }
-.star-rating > label {
+:host > label {
   color: var(--star-rating-default, #fff);
   font-size: var(--star-rating-size, 25px);
   cursor: pointer;
 }
-.star-rating .star-active {
+:host .star-active {
   color: var(--star-rating-active, #f90);
 }
-.star-rating:not(.is-disabled) label:hover,
-.star-rating:not(.is-disabled) label:hover ~ label {
+:host:not(.is-disabled) label:hover,
+:host:not(.is-disabled) label:hover ~ label {
   color: var(--star-rating-hover, #fc0);
 }

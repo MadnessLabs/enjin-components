@@ -10,32 +10,21 @@ import {
 } from "@stencil/core";
 
 @Component({
-  tag: "enjin-star-rating",
-  styleUrl: "star-rating.css"
+  tag: "enjin-star-rating-scoped",
+  styleUrl: "star-rating-scoped.css",
+  scoped: true
 })
-export class EnjinStarRating {
+export class EnjinStarRatingScoped {
   @Element() starRatingEl: HTMLElement;
 
   @Event() ftStarRating: EventEmitter;
 
   @Prop() disabled = false;
-  @Prop() name = "rating";
+  @Prop() name = "rating-scoped";
   @Prop() maxRating = 5;
   @Prop() value: string;
 
   @State() currentRating: number;
-
-  onInput(event) {
-    if (this.disabled) {
-      return false;
-    }
-    this.currentRating = parseFloat(event.target.value);
-    this.ftStarRating.emit({
-      event,
-      name: this.name,
-      value: this.currentRating
-    });
-  }
 
   @Method()
   setCurrentRating(rating: any) {
@@ -64,6 +53,17 @@ export class EnjinStarRating {
     };
   }
 
+  onInput(event) {
+    if (this.disabled) {
+      return false;
+    }
+    this.currentRating = parseFloat(event.target.value);
+    this.ftStarRating.emit({
+      event,
+      name: this.name,
+      value: this.currentRating
+    });
+  }
 
   render() {
     return [...Array(this.maxRating)].map((_radio, index) => [

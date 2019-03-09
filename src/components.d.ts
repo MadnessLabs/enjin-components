@@ -78,9 +78,49 @@ export namespace Components {
     'stripeKey'?: string;
   }
 
-  interface EnjinStarRating {}
+  interface EnjinStarRatingScoped {
+    'disabled': boolean;
+    'maxRating': number;
+    'name': string;
+    'setCurrentRating': (rating: any) => void;
+    'value': string;
+  }
+  interface EnjinStarRatingScopedAttributes extends StencilHTMLAttributes {
+    'disabled'?: boolean;
+    'maxRating'?: number;
+    'name'?: string;
+    'onFtStarRating'?: (event: CustomEvent) => void;
+    'value'?: string;
+  }
+
+  interface EnjinStarRatingShadow {
+    'disabled': boolean;
+    'maxRating': number;
+    'name': string;
+    'setCurrentRating': (rating: any) => void;
+    'value': string;
+  }
+  interface EnjinStarRatingShadowAttributes extends StencilHTMLAttributes {
+    'disabled'?: boolean;
+    'maxRating'?: number;
+    'name'?: string;
+    'onFtStarRating'?: (event: CustomEvent) => void;
+    'value'?: string;
+  }
+
+  interface EnjinStarRating {
+    'disabled': boolean;
+    'maxRating': number;
+    'name': string;
+    'setCurrentRating': (rating: any) => void;
+    'value': string;
+  }
   interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
-    'onEnjinStarRating'?: (event: CustomEvent) => void;
+    'disabled'?: boolean;
+    'maxRating'?: number;
+    'name'?: string;
+    'onFtStarRating'?: (event: CustomEvent) => void;
+    'value'?: string;
   }
 
   interface EnjinTestComponent {}
@@ -92,6 +132,8 @@ declare global {
     'EnjinGallery': Components.EnjinGallery;
     'EnjinOrganism': Components.EnjinOrganism;
     'EnjinPayWithCard': Components.EnjinPayWithCard;
+    'EnjinStarRatingScoped': Components.EnjinStarRatingScoped;
+    'EnjinStarRatingShadow': Components.EnjinStarRatingShadow;
     'EnjinStarRating': Components.EnjinStarRating;
     'EnjinTestComponent': Components.EnjinTestComponent;
   }
@@ -100,6 +142,8 @@ declare global {
     'enjin-gallery': Components.EnjinGalleryAttributes;
     'enjin-organism': Components.EnjinOrganismAttributes;
     'enjin-pay-with-card': Components.EnjinPayWithCardAttributes;
+    'enjin-star-rating-scoped': Components.EnjinStarRatingScopedAttributes;
+    'enjin-star-rating-shadow': Components.EnjinStarRatingShadowAttributes;
     'enjin-star-rating': Components.EnjinStarRatingAttributes;
     'enjin-test-component': Components.EnjinTestComponentAttributes;
   }
@@ -123,6 +167,18 @@ declare global {
     new (): HTMLEnjinPayWithCardElement;
   };
 
+  interface HTMLEnjinStarRatingScopedElement extends Components.EnjinStarRatingScoped, HTMLStencilElement {}
+  var HTMLEnjinStarRatingScopedElement: {
+    prototype: HTMLEnjinStarRatingScopedElement;
+    new (): HTMLEnjinStarRatingScopedElement;
+  };
+
+  interface HTMLEnjinStarRatingShadowElement extends Components.EnjinStarRatingShadow, HTMLStencilElement {}
+  var HTMLEnjinStarRatingShadowElement: {
+    prototype: HTMLEnjinStarRatingShadowElement;
+    new (): HTMLEnjinStarRatingShadowElement;
+  };
+
   interface HTMLEnjinStarRatingElement extends Components.EnjinStarRating, HTMLStencilElement {}
   var HTMLEnjinStarRatingElement: {
     prototype: HTMLEnjinStarRatingElement;
@@ -139,6 +195,8 @@ declare global {
     'enjin-gallery': HTMLEnjinGalleryElement
     'enjin-organism': HTMLEnjinOrganismElement
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement
+    'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement
+    'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement
     'enjin-star-rating': HTMLEnjinStarRatingElement
     'enjin-test-component': HTMLEnjinTestComponentElement
   }
@@ -147,6 +205,8 @@ declare global {
     'enjin-gallery': HTMLEnjinGalleryElement;
     'enjin-organism': HTMLEnjinOrganismElement;
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
+    'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement;
+    'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement;
     'enjin-star-rating': HTMLEnjinStarRatingElement;
     'enjin-test-component': HTMLEnjinTestComponentElement;
   }

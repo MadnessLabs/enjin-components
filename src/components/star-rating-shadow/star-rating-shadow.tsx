@@ -10,16 +10,17 @@ import {
 } from "@stencil/core";
 
 @Component({
-  tag: "enjin-star-rating",
-  styleUrl: "star-rating.css"
+  tag: "enjin-star-rating-shadow",
+  styleUrl: "star-rating-shadow.css",
+  shadow: true
 })
-export class EnjinStarRating {
+export class EnjinStarRatingShadow {
   @Element() starRatingEl: HTMLElement;
 
   @Event() ftStarRating: EventEmitter;
 
   @Prop() disabled = false;
-  @Prop() name = "rating";
+  @Prop() name = "rating-shadow";
   @Prop() maxRating = 5;
   @Prop() value: string;
 
@@ -64,8 +65,8 @@ export class EnjinStarRating {
     };
   }
 
-
   render() {
+    console.log(this.maxRating, this.currentRating);
     return [...Array(this.maxRating)].map((_radio, index) => [
       <label
         class={
@@ -78,7 +79,7 @@ export class EnjinStarRating {
           type="radio"
           name={this.name}
           value={this.maxRating - index}
-          onInput={this.onInput.bind(this)}
+          onInput={(event) => this.onInput(event)}
         />
         &#9733;
       </label>
