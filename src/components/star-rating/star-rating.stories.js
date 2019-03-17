@@ -9,4 +9,24 @@ storiesOf('Star Rating', module)
     notes: {
       markdown: readme
     }
+  })
+  .add('With Rating', () => {
+    const starRatingEl = document.createElement('enjin-star-rating');
+    starRatingEl.value = 3;
+
+    return starRatingEl;
+  }, {
+    notes: {
+      markdown: readme
+    }
+  })
+  .add('Disabled', () => {
+    const starRatingEl = document.createElement('enjin-star-rating');
+    starRatingEl.disabled = true;
+
+    return starRatingEl;
+  }, {
+    notes: {
+      markdown: readme
+    }
   });
