@@ -18,16 +18,26 @@ export class EnjinStarRating {
 
   @Event() enjinStarRating: EventEmitter;
 
-  // Whether or not the field is disabled
+  /**
+   * Whether or not the field is disabled
+   */
   @Prop() disabled = false;
-  // The name of the input
+  /**
+   * The name of the input
+   */
   @Prop() name = "rating";
-  // The max available star rating
+  /**
+   * The max available star rating
+   */
   @Prop() maxRating = 5;
-  // The value of the rating input
+  /**
+   * The value of the rating input
+   */
   @Prop() value: string;
 
-  // The current rating set
+  /**
+   * The current rating set
+   */
   @State() currentRating: number;
 
   onInput(event) {
@@ -42,7 +52,9 @@ export class EnjinStarRating {
     });
   }
 
-  // Set the current rating
+  /**
+   * Set the current rating
+   */
   @Method()
   setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);

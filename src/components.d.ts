@@ -109,17 +109,44 @@ export namespace Components {
   }
 
   interface EnjinStarRating {
+    /**
+    * Whether or not the field is disabled
+    */
     'disabled': boolean;
+    /**
+    * The max available star rating
+    */
     'maxRating': number;
+    /**
+    * The name of the input
+    */
     'name': string;
+    /**
+    * Set the current rating
+    */
     'setCurrentRating': (rating: any) => void;
+    /**
+    * The value of the rating input
+    */
     'value': string;
   }
   interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
+    /**
+    * Whether or not the field is disabled
+    */
     'disabled'?: boolean;
+    /**
+    * The max available star rating
+    */
     'maxRating'?: number;
+    /**
+    * The name of the input
+    */
     'name'?: string;
     'onEnjinStarRating'?: (event: CustomEvent) => void;
+    /**
+    * The value of the rating input
+    */
     'value'?: string;
   }
 

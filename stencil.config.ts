@@ -9,6 +9,9 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null
+    },
+    {
+      type: 'docs'
     }
   ],
   preamble: '(C) Madness Labs https://MadnessLabs.net - MIT License',
