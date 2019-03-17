@@ -9,37 +9,6 @@ export class TestComponent {
         return (
             <div>
                 <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
-                <p>Hello TestComponent!</p>
             </div>
         );
     }

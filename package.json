@@ -14,12 +14,16 @@
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.3.4",
     "@stencil/core": "0.18.0",
-    "@types/stripe-v3": "^3.0.9"
+    "@storybook/html": "^5.0.1",
+    "@types/stripe-v3": "^3.0.9",
+    "babel-loader": "^8.0.5"
   },
   "repository": {
     "type": "git",
