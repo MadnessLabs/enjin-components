@@ -16,13 +16,18 @@ import {
 export class EnjinStarRating {
   @Element() starRatingEl: HTMLElement;
 
-  @Event() ftStarRating: EventEmitter;
+  @Event() enjinStarRating: EventEmitter;
 
+  // Whether or not the field is disabled
   @Prop() disabled = false;
+  // The name of the input
   @Prop() name = "rating";
+  // The max available star rating
   @Prop() maxRating = 5;
+  // The value of the rating input
   @Prop() value: string;
 
+  // The current rating set
   @State() currentRating: number;
 
   onInput(event) {
@@ -30,13 +35,14 @@ export class EnjinStarRating {
       return false;
     }
     this.currentRating = parseFloat(event.target.value);
-    this.ftStarRating.emit({
+    this.enjinStarRating.emit({
       event,
       name: this.name,
       value: this.currentRating
     });
   }
 
+  // Set the current rating
   @Method()
   setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);

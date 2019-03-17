@@ -119,7 +119,7 @@ export namespace Components {
     'disabled'?: boolean;
     'maxRating'?: number;
     'name'?: string;
-    'onFtStarRating'?: (event: CustomEvent) => void;
+    'onEnjinStarRating'?: (event: CustomEvent) => void;
     'value'?: string;
   }
 
