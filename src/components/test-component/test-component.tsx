@@ -8,7 +8,7 @@ export class TestComponent {
     render() {
         return (
             <div>
-                <p>Hello TestComponent!</p>
+                <p>Gotta Catch 'Em All! ^_^</p>
             </div>
         );
     }
