@@ -24,3 +24,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 jest-test-results.json
+core.json

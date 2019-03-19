@@ -12,6 +12,10 @@ export const config: Config = {
     },
     {
       type: 'docs'
+    },
+    {
+      type: "docs-json",
+      file: "src/core.json"
     }
   ],
   preamble: '(C) Madness Labs https://MadnessLabs.net - MIT License',
