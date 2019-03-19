@@ -5,6 +5,7 @@ import readme from "./readme.md";
 
 storiesOf('Star Rating', module)
   .addDecorator(withActions("enjinStarRating"))
+  .addParameters({ jest: ["star-rating"] })
   .add('Default', () => '<enjin-star-rating></enjin-star-rating>', {
     notes: {
       markdown: readme
