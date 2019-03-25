@@ -1,3 +1,4 @@
+import '@ionic/core';
 import { Component } from "@stencil/core";
 
 import { docs } from '../../docs';
@@ -24,6 +25,8 @@ export class Gallery {
                   ))
                 : null}
             </ul>
+            <h2>Examples</h2>
+            {h(component.tag)}
           </div>
         ))
       : null;

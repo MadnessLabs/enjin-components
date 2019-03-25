@@ -7,7 +7,8 @@
 
 import '@stencil/core';
 
-
+import '@ionic/core';
+import 'ionicons';
 
 
 export namespace Components {

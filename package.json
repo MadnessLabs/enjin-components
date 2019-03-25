@@ -12,7 +12,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "stencil build",
-    "start": "stencil build --dev --watch --docs --serve",
+    "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
     "test:snapshot": "stencil test --e2e --screenshot",
@@ -23,7 +23,9 @@
     "story:test": "npm run test:generate && npm run story",
     "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ionic/core": "^4.1.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@stencil/core": "0.18.1",
