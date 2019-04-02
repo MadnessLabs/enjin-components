@@ -79,6 +79,9 @@ export namespace Components {
     'stripeKey'?: string;
   }
 
+  interface EnjinSidebar {}
+  interface EnjinSidebarAttributes extends StencilHTMLAttributes {}
+
   interface EnjinStarRatingScoped {
     'disabled': boolean;
     'maxRating': number;
@@ -160,6 +163,7 @@ declare global {
     'EnjinGallery': Components.EnjinGallery;
     'EnjinOrganism': Components.EnjinOrganism;
     'EnjinPayWithCard': Components.EnjinPayWithCard;
+    'EnjinSidebar': Components.EnjinSidebar;
     'EnjinStarRatingScoped': Components.EnjinStarRatingScoped;
     'EnjinStarRatingShadow': Components.EnjinStarRatingShadow;
     'EnjinStarRating': Components.EnjinStarRating;
@@ -170,6 +174,7 @@ declare global {
     'enjin-gallery': Components.EnjinGalleryAttributes;
     'enjin-organism': Components.EnjinOrganismAttributes;
     'enjin-pay-with-card': Components.EnjinPayWithCardAttributes;
+    'enjin-sidebar': Components.EnjinSidebarAttributes;
     'enjin-star-rating-scoped': Components.EnjinStarRatingScopedAttributes;
     'enjin-star-rating-shadow': Components.EnjinStarRatingShadowAttributes;
     'enjin-star-rating': Components.EnjinStarRatingAttributes;
@@ -193,6 +198,12 @@ declare global {
   var HTMLEnjinPayWithCardElement: {
     prototype: HTMLEnjinPayWithCardElement;
     new (): HTMLEnjinPayWithCardElement;
+  };
+
+  interface HTMLEnjinSidebarElement extends Components.EnjinSidebar, HTMLStencilElement {}
+  var HTMLEnjinSidebarElement: {
+    prototype: HTMLEnjinSidebarElement;
+    new (): HTMLEnjinSidebarElement;
   };
 
   interface HTMLEnjinStarRatingScopedElement extends Components.EnjinStarRatingScoped, HTMLStencilElement {}
@@ -223,6 +234,7 @@ declare global {
     'enjin-gallery': HTMLEnjinGalleryElement
     'enjin-organism': HTMLEnjinOrganismElement
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement
+    'enjin-sidebar': HTMLEnjinSidebarElement
     'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement
     'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement
     'enjin-star-rating': HTMLEnjinStarRatingElement
@@ -233,6 +245,7 @@ declare global {
     'enjin-gallery': HTMLEnjinGalleryElement;
     'enjin-organism': HTMLEnjinOrganismElement;
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
+    'enjin-sidebar': HTMLEnjinSidebarElement;
     'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement;
     'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement;
     'enjin-star-rating': HTMLEnjinStarRatingElement;

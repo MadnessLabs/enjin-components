@@ -44,6 +44,7 @@ export class Gallery {
             </ul>
             <h2>Examples</h2>
             {h(component.tag, this.currentProps[component.tag] ? {...this.currentProps[component.tag]} : null)}
+            <enjin-sidebar></enjin-sidebar>
           </div>
         )})
       : null;
