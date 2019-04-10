@@ -17,17 +17,13 @@ export class Gallery {
     if (!this.currentProps[component.tag]) {
       this.currentProps[component.tag] = {};
     }
-    console.log(event.data);
     this.currentProps[component.tag][prop.name] = event.data;
     this.currentProps = {...this.currentProps};
-    console.log(this.currentProps);
   }
 
   render() {
-    console.log("I rendered");
     return this.docs && this.docs.components && this.docs.components.length > 0
       ? this.docs.components.map(component =>{ 
-        console.log(this.currentProps[component.tag] ? this.currentProps[component.tag] : null);
         return (
           <div>
             <h1>{component.tag}</h1>
