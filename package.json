@@ -24,7 +24,6 @@
     "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
   "dependencies": {
-    "@ionic/core": "^4.1.2",
     "@stencil/core": "0.18.1",
     "@stencil/router": "^0.3.3"
   },

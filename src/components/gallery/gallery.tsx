@@ -1,12 +1,12 @@
 import '@stencil/router';
-import '@ionic/core';
 import { Component, State } from "@stencil/core";
 
 import { docs } from '../../docs';
 
 @Component({
   tag: "enjin-gallery",
-  styleUrl: "gallery.css"
+  styleUrl: "gallery.css",
+  shadow: true
 })
 export class Gallery {
   docs: any = docs;

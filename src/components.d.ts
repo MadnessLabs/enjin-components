@@ -7,8 +7,6 @@
 
 import '@stencil/core';
 
-import '@ionic/core';
-import 'ionicons';
 import '@stencil/router';
 import '@stencil/state-tunnel';
 
