@@ -1,4 +1,3 @@
-import '@ionic/core';
 import { Component, Prop } from "@stencil/core";
 
 @Component({
@@ -6,6 +5,7 @@ import { Component, Prop } from "@stencil/core";
   styleUrl: "sidebar.css"
 })
 export class Sidebar {
+  
   @Prop() components: any = [];
 
   render() {
