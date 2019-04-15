@@ -1,3 +1,4 @@
+import '@stencil/router';
 import '@ionic/core';
 import { Component, State } from "@stencil/core";
 
@@ -22,27 +23,13 @@ export class Gallery {
   }
 
   render() {
-    return this.docs && this.docs.components && this.docs.components.length > 0
-      ? this.docs.components.map(component =>{ 
-        return (
-          <div>
-            <h1>{component.tag}</h1>
-            <h2>Props</h2>
-            <ul>
-              {component.props && component.props.length > 0
-                ? component.props.map(prop => (
-                    <li>
-                      {prop.name} ({prop.type}) - {prop.docs}
-                      <input type="text" name={`${component.tag}_${prop.name}`} onInput={event => this.updateProp(event, component, prop)} />
-                    </li>
-                  ))
-                : null}
-            </ul>
-            <h2>Examples</h2>
-            {h(component.tag, this.currentProps[component.tag] ? {...this.currentProps[component.tag]} : null)}
-            <enjin-sidebar></enjin-sidebar>
-          </div>
-        )})
-      : null;
+    return [
+    <enjin-sidebar components={this.docs && this.docs.components ? this.docs.components : null} />,
+    <stencil-router id="router">
+      {this.docs && this.docs.components ? this.docs.components.map((component) => 
+        <stencil-route url={`/organism/${component.tag}`} component='enjin-organism' componentProps={{component}} />
+      ) : null}
+    </stencil-router>
+    ];
   }
 }

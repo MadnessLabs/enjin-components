@@ -1,4 +1,4 @@
-import { EnjinOrganism } from './enjin-organism';
+import { EnjinOrganism } from './organism';
 
 describe('enjin-organism', () => {
   it('should build', () => {

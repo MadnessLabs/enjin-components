@@ -1,4 +1,4 @@
-import { EnjinSidebarComponent } from './enjin-sidebar-component';
+import { EnjinSidebarComponent } from './sidebar-component';
 
 describe('enjin-sidebar-component', () => {
   it('should build', () => {

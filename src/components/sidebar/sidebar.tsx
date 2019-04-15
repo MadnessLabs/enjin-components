@@ -11,9 +11,7 @@ export class Sidebar {
   render() {
     return <div>
       {this.components && this.components.length > 0
-      && this.components.map(component =>
-        h('enjin-sidebar-component', {component})
-      )
+      && this.components.map(component => h('enjin-sidebar-component', {component}))
      }
     </div>;
   }

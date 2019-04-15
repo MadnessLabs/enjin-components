@@ -24,11 +24,12 @@
     "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
   "dependencies": {
-    "@ionic/core": "^4.1.2"
+    "@ionic/core": "^4.1.2",
+    "@stencil/core": "0.18.1",
+    "@stencil/router": "^0.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
-    "@stencil/core": "0.18.1",
     "@storybook/addon-actions": "^5.0.3",
     "@storybook/addon-jest": "^5.0.3",
     "@storybook/addon-notes": "^5.0.3",

@@ -9,15 +9,67 @@ import '@stencil/core';
 
 import '@ionic/core';
 import 'ionicons';
+import '@stencil/router';
+import '@stencil/state-tunnel';
 
 
 export namespace Components {
 
-  interface EnjinOrganism {}
-  interface EnjinOrganismAttributes extends StencilHTMLAttributes {}
-
   interface EnjinGallery {}
   interface EnjinGalleryAttributes extends StencilHTMLAttributes {}
+
+  interface EnjinOrganism {
+    'component': {
+      docs: string;
+      docsTags: any[];
+      encapsulation: string;
+      events: any[];
+      methods: any[];
+      props: {
+        attr: string;
+        default: any;
+        docs: string;
+        docsTags: any[];
+        mutable: boolean;
+        name: string;
+        optional: boolean;
+        reflectToAttr: boolean;
+        required: boolean;
+        type: string;
+      }[];
+      readme: string;
+      slots: any[];
+      styles: any[];
+      tag: string;
+      usage: any;
+    };
+  }
+  interface EnjinOrganismAttributes extends StencilHTMLAttributes {
+    'component'?: {
+      docs: string;
+      docsTags: any[];
+      encapsulation: string;
+      events: any[];
+      methods: any[];
+      props: {
+        attr: string;
+        default: any;
+        docs: string;
+        docsTags: any[];
+        mutable: boolean;
+        name: string;
+        optional: boolean;
+        reflectToAttr: boolean;
+        required: boolean;
+        type: string;
+      }[];
+      readme: string;
+      slots: any[];
+      styles: any[];
+      tag: string;
+      usage: any;
+    };
+  }
 
   interface EnjinPayWithCard {
     'stripeKey': string;
@@ -27,8 +79,58 @@ export namespace Components {
     'stripeKey'?: string;
   }
 
-  interface EnjinSidebarComponent {}
-  interface EnjinSidebarComponentAttributes extends StencilHTMLAttributes {}
+  interface EnjinSidebarComponent {
+    'component': {
+      docs: string;
+      docsTags: any[];
+      encapsulation: string;
+      events: any[];
+      methods: any[];
+      props: {
+        attr: string;
+        default: any;
+        docs: string;
+        docsTags: any[];
+        mutable: boolean;
+        name: string;
+        optional: boolean;
+        reflectToAttr: boolean;
+        required: boolean;
+        type: string;
+      }[];
+      readme: string;
+      slots: any[];
+      styles: any[];
+      tag: string;
+      usage: any;
+    };
+  }
+  interface EnjinSidebarComponentAttributes extends StencilHTMLAttributes {
+    'component'?: {
+      docs: string;
+      docsTags: any[];
+      encapsulation: string;
+      events: any[];
+      methods: any[];
+      props: {
+        attr: string;
+        default: any;
+        docs: string;
+        docsTags: any[];
+        mutable: boolean;
+        name: string;
+        optional: boolean;
+        reflectToAttr: boolean;
+        required: boolean;
+        type: string;
+      }[];
+      readme: string;
+      slots: any[];
+      styles: any[];
+      tag: string;
+      usage: any;
+    };
+  }
 
   interface EnjinSidebar {
     'components': any;
@@ -115,8 +217,8 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
-    'EnjinOrganism': Components.EnjinOrganism;
     'EnjinGallery': Components.EnjinGallery;
+    'EnjinOrganism': Components.EnjinOrganism;
     'EnjinPayWithCard': Components.EnjinPayWithCard;
     'EnjinSidebarComponent': Components.EnjinSidebarComponent;
     'EnjinSidebar': Components.EnjinSidebar;
@@ -127,8 +229,8 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
-    'enjin-organism': Components.EnjinOrganismAttributes;
     'enjin-gallery': Components.EnjinGalleryAttributes;
+    'enjin-organism': Components.EnjinOrganismAttributes;
     'enjin-pay-with-card': Components.EnjinPayWithCardAttributes;
     'enjin-sidebar-component': Components.EnjinSidebarComponentAttributes;
     'enjin-sidebar': Components.EnjinSidebarAttributes;
@@ -139,16 +241,16 @@ declare global {
   }
 
 
-  interface HTMLEnjinOrganismElement extends Components.EnjinOrganism, HTMLStencilElement {}
-  var HTMLEnjinOrganismElement: {
-    prototype: HTMLEnjinOrganismElement;
-    new (): HTMLEnjinOrganismElement;
-  };
-
   interface HTMLEnjinGalleryElement extends Components.EnjinGallery, HTMLStencilElement {}
   var HTMLEnjinGalleryElement: {
     prototype: HTMLEnjinGalleryElement;
     new (): HTMLEnjinGalleryElement;
+  };
+
+  interface HTMLEnjinOrganismElement extends Components.EnjinOrganism, HTMLStencilElement {}
+  var HTMLEnjinOrganismElement: {
+    prototype: HTMLEnjinOrganismElement;
+    new (): HTMLEnjinOrganismElement;
   };
 
   interface HTMLEnjinPayWithCardElement extends Components.EnjinPayWithCard, HTMLStencilElement {}
@@ -194,8 +296,8 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'enjin-organism': HTMLEnjinOrganismElement
     'enjin-gallery': HTMLEnjinGalleryElement
+    'enjin-organism': HTMLEnjinOrganismElement
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement
     'enjin-sidebar-component': HTMLEnjinSidebarComponentElement
     'enjin-sidebar': HTMLEnjinSidebarElement
@@ -206,8 +308,8 @@ declare global {
   }
 
   interface ElementTagNameMap {
-    'enjin-organism': HTMLEnjinOrganismElement;
     'enjin-gallery': HTMLEnjinGalleryElement;
+    'enjin-organism': HTMLEnjinOrganismElement;
     'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
     'enjin-sidebar-component': HTMLEnjinSidebarComponentElement;
     'enjin-sidebar': HTMLEnjinSidebarElement;
