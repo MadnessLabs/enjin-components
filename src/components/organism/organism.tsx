@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
 
 
 @Component({
@@ -32,7 +32,28 @@ export class EnjinOrganism {
     usage: any;
   };
 
+  @State() currentProps = {};
+
+  updateProp(event, name: string) {
+    this.currentProps[name] = event.target.value;
+    this.currentProps = {...this.currentProps};
+  }
+
   render() {
-    return this.component ? h(this.component.tag) : null;
+    return (
+      <div class="organism-wrapper">
+        <div>
+          {this.component ? h(this.component.tag, {...this.currentProps}) : null}
+        </div>
+        <div class="sidebar">
+          {this.component.props.map(prop => 
+            <label>
+              {prop.name} - {prop.docs}
+              <input name={prop.name} onInput={event => this.updateProp(event, prop.name)} />
+            </label>
+          )}
+        </div>
+      </div>
+    );
   }
 }
