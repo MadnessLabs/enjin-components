@@ -1,8 +1,8 @@
 export default {
     test: {
-        maxRating: 10
-    },
-    again: {
-        maxRating: 20
+        name: "with 10 star max",
+        props: {
+            maxRating: 10
+        }
     }
 };

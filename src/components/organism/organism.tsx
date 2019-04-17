@@ -1,4 +1,5 @@
-import { Component, Listen, Prop, State } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
+import { MatchResults } from '@stencil/router';
 
 
 @Component({
@@ -6,18 +7,6 @@ import { Component, Listen, Prop, State } from '@stencil/core';
   styleUrl: 'organism.css'
 })
 export class EnjinOrganism {
-
-  @Listen('body:enjinSetPhase')
-  onSetPhase(event) {
-    if (event.detail && event.detail.component && this.component.tag !== event.detail.component.tag) {
-      this.component = event.detail.component;
-    }
-    if (this.component.phases && this.component.phases[event.detail.phaseName]) {
-      this.currentProps = {...this.component.phases[event.detail.phaseName]};
-    } else {
-      this.currentProps = this.component.phases['default'] ? this.component.phases['default'] : null;
-    }
-  }
 
   @Prop({
     mutable: true
@@ -46,12 +35,27 @@ export class EnjinOrganism {
     tag: string;
     usage: any;
   };
+  @Prop() match: MatchResults;
 
   @State() currentProps = {};
+
+  setPhase(phaseName: string) {
+    if (this.component.phases && this.component.phases[phaseName] && this.component.phases[phaseName].props) {
+      this.currentProps = {...this.component.phases[phaseName].props};
+    } else {
+      this.currentProps = this.component.phases['default'] && this.component.phases['default'].props ? this.component.phases['default'].props : null;
+    }
+  }
 
   updateProp(event, name: string) {
     this.currentProps[name] = event.target.value;
     this.currentProps = {...this.currentProps};
+  }
+  
+  componentDidLoad() {
+    if (this.match && this.match.params && this.match.params.phase) {
+      this.setPhase(this.match.params.phase);
+    }
   }
 
   render() {

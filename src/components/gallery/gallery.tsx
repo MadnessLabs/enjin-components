@@ -70,7 +70,7 @@ export class Gallery {
         </header>
         <stencil-router id="router">
           {this.components.map((component) => 
-            <stencil-route url={`/organism/${component.tag}`} component='enjin-organism' componentProps={{component}} />
+            <stencil-route url={`/organism/${component.tag}/:phase?`} component='enjin-organism' componentProps={{component}} />
           )}
         </stencil-router>
       </main>

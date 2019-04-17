@@ -9,6 +9,9 @@ import '@stencil/core';
 
 import '@stencil/router';
 import '@stencil/state-tunnel';
+import {
+  MatchResults,
+} from '@stencil/router';
 
 
 export namespace Components {
@@ -42,6 +45,7 @@ export namespace Components {
       tag: string;
       usage: any;
     };
+    'match': MatchResults;
   }
   interface EnjinOrganismAttributes extends StencilHTMLAttributes {
     'component'?: {
@@ -69,6 +73,7 @@ export namespace Components {
       tag: string;
       usage: any;
     };
+    'match'?: MatchResults;
   }
 
   interface EnjinPayWithCard {
