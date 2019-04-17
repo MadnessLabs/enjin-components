@@ -15,7 +15,7 @@ export class EnjinOrganism {
     if (this.component.phases && this.component.phases[event.detail.phaseName]) {
       this.currentProps = {...this.component.phases[event.detail.phaseName]};
     } else {
-      this.currentProps = {};
+      this.currentProps = this.component.phases['default'] ? this.component.phases['default'] : null;
     }
   }
 
