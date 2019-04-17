@@ -16,15 +16,7 @@ export class Gallery {
   @Element() galleryEl: HTMLEnjinGalleryElement;
   
   @State()
-  currentProps: any = {};
-
-  updateProp(event, component, prop) {
-    if (!this.currentProps[component.tag]) {
-      this.currentProps[component.tag] = {};
-    }
-    this.currentProps[component.tag][prop.name] = event.data;
-    this.currentProps = {...this.currentProps};
-  }
+  components: any = [];
   
   toggleSidebar(event) {
     if (event) {
@@ -33,19 +25,41 @@ export class Gallery {
     this.slideout.toggle();
   }
 
-  componentDidLoad() {
+  async getComponentPhases() {
+    let promises = [];
+    this.components.map((component, index) => {
+    promises.push(new Promise((resolve, reject) => {
+        require([`${component.tag.replace(component.tag.split('-')[0]+'-', '')}.phases`], (phases) => {
+          this.components[index].phases = phases.default;
+          resolve(phases.default);
+        }, () => {
+          console.log(`${component.tag} phases not found!`);
+          reject(`${component.tag} phases not found!`);
+        });
+      }));
+    });
+
+    const response = Promise.all(promises);
+    this.components = [...this.components];
+
+    return response;
+  }
+
+  async componentDidLoad() {
+    this.components = this.docs && this.docs.components && this.docs.components ? this.docs.components : [];
     this.slideout = new Slideout({
       panel: this.galleryEl.querySelector('#panel'),
       menu: this.galleryEl.querySelector('#menu'),
       padding: 256,
       tolerance: 70
     });
+    await this.getComponentPhases();
   }
 
   render() {
     return [
       <nav id="menu">
-        <enjin-sidebar components={this.docs && this.docs.components ? this.docs.components : null} />
+        <enjin-sidebar components={this.components} />
       </nav>,
       <main id="panel">
         <header>
@@ -55,9 +69,9 @@ export class Gallery {
           <h2>Enjin</h2>
         </header>
         <stencil-router id="router">
-          {this.docs && this.docs.components ? this.docs.components.map((component) => 
+          {this.components.map((component) => 
             <stencil-route url={`/organism/${component.tag}`} component='enjin-organism' componentProps={{component}} />
-          ) : null}
+          )}
         </stencil-router>
       </main>
     ];

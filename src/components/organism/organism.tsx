@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Listen, Prop, State } from '@stencil/core';
 
 
 @Component({
@@ -7,12 +7,27 @@ import { Component, Prop, State } from '@stencil/core';
 })
 export class EnjinOrganism {
 
-  @Prop() component: {
+  @Listen('body:enjinSetPhase')
+  onSetPhase(event) {
+    if (event.detail && event.detail.component && this.component.tag !== event.detail.component.tag) {
+      this.component = event.detail.component;
+    }
+    if (this.component.phases && this.component.phases[event.detail.phaseName]) {
+      this.currentProps = {...this.component.phases[event.detail.phaseName]};
+    } else {
+      this.currentProps = {};
+    }
+  }
+
+  @Prop({
+    mutable: true
+  }) component: {
     docs: string;
     docsTags: any[];
     encapsulation: string;
     events: any[];
     methods: any[];
+    phases: any;
     props: {
       attr: string;
       default: any;

@@ -1,8 +1,8 @@
 const fg = require('fast-glob');
 var exec = require('child_process').exec;
 
-const entries = fg.sync(['src/**/*.phases.ts']);
-const command = `tsc ${entries} --out ./www/phases.js --module amd`;
+const entries = fg.sync(['src/**/*.phases.ts']); 
+const command = `tsc ${entries} --out ./www/phases.js --module amd ${process.argv[2] === 'watch' && '--watch'}`;
 
 exec(command, function(error, stdout, stderr) {
     if (error !== null) {

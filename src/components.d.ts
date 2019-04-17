@@ -23,6 +23,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
+      phases: any;
       props: {
         attr: string;
         default: any;
@@ -49,6 +50,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
+      phases: any;
       props: {
         attr: string;
         default: any;
@@ -84,6 +86,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
+      phases: any;
       props: {
         attr: string;
         default: any;
@@ -110,6 +113,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
+      phases: any;
       props: {
         attr: string;
         default: any;
@@ -128,6 +132,7 @@ export namespace Components {
       tag: string;
       usage: any;
     };
+    'onEnjinSetPhase'?: (event: CustomEvent<any>) => void;
   }
 
   interface EnjinSidebar {
