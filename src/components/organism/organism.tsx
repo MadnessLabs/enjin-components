@@ -68,7 +68,7 @@ export class EnjinOrganism {
           {this.component.props.map(prop => 
             <label>
               {prop.name} - {prop.docs}
-              <input name={prop.name} onInput={event => this.updateProp(event, prop.name)} />
+              <input name={prop.name} onInput={event => this.updateProp(event, prop.name)} value={this.currentProps && this.currentProps[prop.name] ? this.currentProps[prop.name] : null} />
             </label>
           )}
         </div>
