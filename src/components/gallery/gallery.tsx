@@ -1,5 +1,5 @@
 import '@stencil/router';
-import { Component, Element, State } from "@stencil/core";
+import { Component, Element, State, h } from "@stencil/core";
 import Slideout from "slideout";
 
 import { docs } from '../../docs';

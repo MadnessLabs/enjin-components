@@ -5,20 +5,13 @@
  */
 
 
-import '@stencil/core';
-
-import '@stencil/router';
-import '@stencil/state-tunnel';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   MatchResults,
 } from '@stencil/router';
 
-
 export namespace Components {
-
   interface EnjinGallery {}
-  interface EnjinGalleryAttributes extends StencilHTMLAttributes {}
-
   interface EnjinOrganism {
     'component': {
       docs: string;
@@ -47,43 +40,12 @@ export namespace Components {
     };
     'match': MatchResults;
   }
-  interface EnjinOrganismAttributes extends StencilHTMLAttributes {
-    'component'?: {
-      docs: string;
-      docsTags: any[];
-      encapsulation: string;
-      events: any[];
-      methods: any[];
-      phases: any;
-      props: {
-        attr: string;
-        default: any;
-        docs: string;
-        docsTags: any[];
-        mutable: boolean;
-        name: string;
-        optional: boolean;
-        reflectToAttr: boolean;
-        required: boolean;
-        type: string;
-      }[];
-      readme: string;
-      slots: any[];
-      styles: any[];
-      tag: string;
-      usage: any;
-    };
-    'match'?: MatchResults;
-  }
-
   interface EnjinPayWithCard {
     'stripeKey': string;
   }
-  interface EnjinPayWithCardAttributes extends StencilHTMLAttributes {
-    'onEnjinCardSubmit'?: (event: CustomEvent) => void;
-    'stripeKey'?: string;
+  interface EnjinSidebar {
+    'components': any;
   }
-
   interface EnjinSidebarComponent {
     'component': {
       docs: string;
@@ -111,7 +73,152 @@ export namespace Components {
       usage: any;
     };
   }
-  interface EnjinSidebarComponentAttributes extends StencilHTMLAttributes {
+  interface EnjinStarRating {
+    /**
+    * Whether or not the field is disabled
+    */
+    'disabled': boolean;
+    /**
+    * The max available star rating
+    */
+    'maxRating': number;
+    /**
+    * The name of the input
+    */
+    'name': string;
+    /**
+    * Set the current rating
+    */
+    'setCurrentRating': (rating: any) => Promise<void>;
+    /**
+    * The value of the rating input
+    */
+    'value': string;
+  }
+  interface EnjinStarRatingScoped {
+    'disabled': boolean;
+    'maxRating': number;
+    'name': string;
+    'setCurrentRating': (rating: any) => Promise<void>;
+    'value': string;
+  }
+  interface EnjinStarRatingShadow {
+    'disabled': boolean;
+    'maxRating': number;
+    'name': string;
+    'setCurrentRating': (rating: any) => Promise<void>;
+    'value': string;
+  }
+  interface EnjinTestComponent {}
+}
+
+declare global {
+
+
+  interface HTMLEnjinGalleryElement extends Components.EnjinGallery, HTMLStencilElement {}
+  var HTMLEnjinGalleryElement: {
+    prototype: HTMLEnjinGalleryElement;
+    new (): HTMLEnjinGalleryElement;
+  };
+
+  interface HTMLEnjinOrganismElement extends Components.EnjinOrganism, HTMLStencilElement {}
+  var HTMLEnjinOrganismElement: {
+    prototype: HTMLEnjinOrganismElement;
+    new (): HTMLEnjinOrganismElement;
+  };
+
+  interface HTMLEnjinPayWithCardElement extends Components.EnjinPayWithCard, HTMLStencilElement {}
+  var HTMLEnjinPayWithCardElement: {
+    prototype: HTMLEnjinPayWithCardElement;
+    new (): HTMLEnjinPayWithCardElement;
+  };
+
+  interface HTMLEnjinSidebarElement extends Components.EnjinSidebar, HTMLStencilElement {}
+  var HTMLEnjinSidebarElement: {
+    prototype: HTMLEnjinSidebarElement;
+    new (): HTMLEnjinSidebarElement;
+  };
+
+  interface HTMLEnjinSidebarComponentElement extends Components.EnjinSidebarComponent, HTMLStencilElement {}
+  var HTMLEnjinSidebarComponentElement: {
+    prototype: HTMLEnjinSidebarComponentElement;
+    new (): HTMLEnjinSidebarComponentElement;
+  };
+
+  interface HTMLEnjinStarRatingElement extends Components.EnjinStarRating, HTMLStencilElement {}
+  var HTMLEnjinStarRatingElement: {
+    prototype: HTMLEnjinStarRatingElement;
+    new (): HTMLEnjinStarRatingElement;
+  };
+
+  interface HTMLEnjinStarRatingScopedElement extends Components.EnjinStarRatingScoped, HTMLStencilElement {}
+  var HTMLEnjinStarRatingScopedElement: {
+    prototype: HTMLEnjinStarRatingScopedElement;
+    new (): HTMLEnjinStarRatingScopedElement;
+  };
+
+  interface HTMLEnjinStarRatingShadowElement extends Components.EnjinStarRatingShadow, HTMLStencilElement {}
+  var HTMLEnjinStarRatingShadowElement: {
+    prototype: HTMLEnjinStarRatingShadowElement;
+    new (): HTMLEnjinStarRatingShadowElement;
+  };
+
+  interface HTMLEnjinTestComponentElement extends Components.EnjinTestComponent, HTMLStencilElement {}
+  var HTMLEnjinTestComponentElement: {
+    prototype: HTMLEnjinTestComponentElement;
+    new (): HTMLEnjinTestComponentElement;
+  };
+  interface HTMLElementTagNameMap {
+    'enjin-gallery': HTMLEnjinGalleryElement;
+    'enjin-organism': HTMLEnjinOrganismElement;
+    'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
+    'enjin-sidebar': HTMLEnjinSidebarElement;
+    'enjin-sidebar-component': HTMLEnjinSidebarComponentElement;
+    'enjin-star-rating': HTMLEnjinStarRatingElement;
+    'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement;
+    'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement;
+    'enjin-test-component': HTMLEnjinTestComponentElement;
+  }
+}
+
+declare namespace LocalJSX {
+  interface EnjinGallery extends JSXBase.HTMLAttributes<HTMLEnjinGalleryElement> {}
+  interface EnjinOrganism extends JSXBase.HTMLAttributes<HTMLEnjinOrganismElement> {
+    'component'?: {
+      docs: string;
+      docsTags: any[];
+      encapsulation: string;
+      events: any[];
+      methods: any[];
+      phases: any;
+      props: {
+        attr: string;
+        default: any;
+        docs: string;
+        docsTags: any[];
+        mutable: boolean;
+        name: string;
+        optional: boolean;
+        reflectToAttr: boolean;
+        required: boolean;
+        type: string;
+      }[];
+      readme: string;
+      slots: any[];
+      styles: any[];
+      tag: string;
+      usage: any;
+    };
+    'match'?: MatchResults;
+  }
+  interface EnjinPayWithCard extends JSXBase.HTMLAttributes<HTMLEnjinPayWithCardElement> {
+    'onEnjinCardSubmit'?: (event: CustomEvent<any>) => void;
+    'stripeKey'?: string;
+  }
+  interface EnjinSidebar extends JSXBase.HTMLAttributes<HTMLEnjinSidebarElement> {
+    'components'?: any;
+  }
+  interface EnjinSidebarComponent extends JSXBase.HTMLAttributes<HTMLEnjinSidebarComponentElement> {
     'component'?: {
       docs: string;
       docsTags: any[];
@@ -139,67 +246,7 @@ export namespace Components {
     };
     'onEnjinSetPhase'?: (event: CustomEvent<any>) => void;
   }
-
-  interface EnjinSidebar {
-    'components': any;
-  }
-  interface EnjinSidebarAttributes extends StencilHTMLAttributes {
-    'components'?: any;
-  }
-
-  interface EnjinStarRatingScoped {
-    'disabled': boolean;
-    'maxRating': number;
-    'name': string;
-    'setCurrentRating': (rating: any) => void;
-    'value': string;
-  }
-  interface EnjinStarRatingScopedAttributes extends StencilHTMLAttributes {
-    'disabled'?: boolean;
-    'maxRating'?: number;
-    'name'?: string;
-    'onFtStarRating'?: (event: CustomEvent) => void;
-    'value'?: string;
-  }
-
-  interface EnjinStarRatingShadow {
-    'disabled': boolean;
-    'maxRating': number;
-    'name': string;
-    'setCurrentRating': (rating: any) => void;
-    'value': string;
-  }
-  interface EnjinStarRatingShadowAttributes extends StencilHTMLAttributes {
-    'disabled'?: boolean;
-    'maxRating'?: number;
-    'name'?: string;
-    'onFtStarRating'?: (event: CustomEvent) => void;
-    'value'?: string;
-  }
-
-  interface EnjinStarRating {
-    /**
-    * Whether or not the field is disabled
-    */
-    'disabled': boolean;
-    /**
-    * The max available star rating
-    */
-    'maxRating': number;
-    /**
-    * The name of the input
-    */
-    'name': string;
-    /**
-    * Set the current rating
-    */
-    'setCurrentRating': (rating: any) => void;
-    /**
-    * The value of the rating input
-    */
-    'value': string;
-  }
-  interface EnjinStarRatingAttributes extends StencilHTMLAttributes {
+  interface EnjinStarRating extends JSXBase.HTMLAttributes<HTMLEnjinStarRatingElement> {
     /**
     * Whether or not the field is disabled
     */
@@ -212,128 +259,48 @@ export namespace Components {
     * The name of the input
     */
     'name'?: string;
-    'onEnjinStarRating'?: (event: CustomEvent) => void;
+    'onEnjinStarRating'?: (event: CustomEvent<any>) => void;
     /**
     * The value of the rating input
     */
     'value'?: string;
   }
+  interface EnjinStarRatingScoped extends JSXBase.HTMLAttributes<HTMLEnjinStarRatingScopedElement> {
+    'disabled'?: boolean;
+    'maxRating'?: number;
+    'name'?: string;
+    'onFtStarRating'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
+  }
+  interface EnjinStarRatingShadow extends JSXBase.HTMLAttributes<HTMLEnjinStarRatingShadowElement> {
+    'disabled'?: boolean;
+    'maxRating'?: number;
+    'name'?: string;
+    'onFtStarRating'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
+  }
+  interface EnjinTestComponent extends JSXBase.HTMLAttributes<HTMLEnjinTestComponentElement> {}
 
-  interface EnjinTestComponent {}
-  interface EnjinTestComponentAttributes extends StencilHTMLAttributes {}
+  interface IntrinsicElements {
+    'enjin-gallery': EnjinGallery;
+    'enjin-organism': EnjinOrganism;
+    'enjin-pay-with-card': EnjinPayWithCard;
+    'enjin-sidebar': EnjinSidebar;
+    'enjin-sidebar-component': EnjinSidebarComponent;
+    'enjin-star-rating': EnjinStarRating;
+    'enjin-star-rating-scoped': EnjinStarRatingScoped;
+    'enjin-star-rating-shadow': EnjinStarRatingShadow;
+    'enjin-test-component': EnjinTestComponent;
+  }
 }
 
-declare global {
-  interface StencilElementInterfaces {
-    'EnjinGallery': Components.EnjinGallery;
-    'EnjinOrganism': Components.EnjinOrganism;
-    'EnjinPayWithCard': Components.EnjinPayWithCard;
-    'EnjinSidebarComponent': Components.EnjinSidebarComponent;
-    'EnjinSidebar': Components.EnjinSidebar;
-    'EnjinStarRatingScoped': Components.EnjinStarRatingScoped;
-    'EnjinStarRatingShadow': Components.EnjinStarRatingShadow;
-    'EnjinStarRating': Components.EnjinStarRating;
-    'EnjinTestComponent': Components.EnjinTestComponent;
-  }
-
-  interface StencilIntrinsicElements {
-    'enjin-gallery': Components.EnjinGalleryAttributes;
-    'enjin-organism': Components.EnjinOrganismAttributes;
-    'enjin-pay-with-card': Components.EnjinPayWithCardAttributes;
-    'enjin-sidebar-component': Components.EnjinSidebarComponentAttributes;
-    'enjin-sidebar': Components.EnjinSidebarAttributes;
-    'enjin-star-rating-scoped': Components.EnjinStarRatingScopedAttributes;
-    'enjin-star-rating-shadow': Components.EnjinStarRatingShadowAttributes;
-    'enjin-star-rating': Components.EnjinStarRatingAttributes;
-    'enjin-test-component': Components.EnjinTestComponentAttributes;
-  }
+export { LocalJSX as JSX };
 
 
-  interface HTMLEnjinGalleryElement extends Components.EnjinGallery, HTMLStencilElement {}
-  var HTMLEnjinGalleryElement: {
-    prototype: HTMLEnjinGalleryElement;
-    new (): HTMLEnjinGalleryElement;
-  };
-
-  interface HTMLEnjinOrganismElement extends Components.EnjinOrganism, HTMLStencilElement {}
-  var HTMLEnjinOrganismElement: {
-    prototype: HTMLEnjinOrganismElement;
-    new (): HTMLEnjinOrganismElement;
-  };
-
-  interface HTMLEnjinPayWithCardElement extends Components.EnjinPayWithCard, HTMLStencilElement {}
-  var HTMLEnjinPayWithCardElement: {
-    prototype: HTMLEnjinPayWithCardElement;
-    new (): HTMLEnjinPayWithCardElement;
-  };
-
-  interface HTMLEnjinSidebarComponentElement extends Components.EnjinSidebarComponent, HTMLStencilElement {}
-  var HTMLEnjinSidebarComponentElement: {
-    prototype: HTMLEnjinSidebarComponentElement;
-    new (): HTMLEnjinSidebarComponentElement;
-  };
-
-  interface HTMLEnjinSidebarElement extends Components.EnjinSidebar, HTMLStencilElement {}
-  var HTMLEnjinSidebarElement: {
-    prototype: HTMLEnjinSidebarElement;
-    new (): HTMLEnjinSidebarElement;
-  };
-
-  interface HTMLEnjinStarRatingScopedElement extends Components.EnjinStarRatingScoped, HTMLStencilElement {}
-  var HTMLEnjinStarRatingScopedElement: {
-    prototype: HTMLEnjinStarRatingScopedElement;
-    new (): HTMLEnjinStarRatingScopedElement;
-  };
-
-  interface HTMLEnjinStarRatingShadowElement extends Components.EnjinStarRatingShadow, HTMLStencilElement {}
-  var HTMLEnjinStarRatingShadowElement: {
-    prototype: HTMLEnjinStarRatingShadowElement;
-    new (): HTMLEnjinStarRatingShadowElement;
-  };
-
-  interface HTMLEnjinStarRatingElement extends Components.EnjinStarRating, HTMLStencilElement {}
-  var HTMLEnjinStarRatingElement: {
-    prototype: HTMLEnjinStarRatingElement;
-    new (): HTMLEnjinStarRatingElement;
-  };
-
-  interface HTMLEnjinTestComponentElement extends Components.EnjinTestComponent, HTMLStencilElement {}
-  var HTMLEnjinTestComponentElement: {
-    prototype: HTMLEnjinTestComponentElement;
-    new (): HTMLEnjinTestComponentElement;
-  };
-
-  interface HTMLElementTagNameMap {
-    'enjin-gallery': HTMLEnjinGalleryElement
-    'enjin-organism': HTMLEnjinOrganismElement
-    'enjin-pay-with-card': HTMLEnjinPayWithCardElement
-    'enjin-sidebar-component': HTMLEnjinSidebarComponentElement
-    'enjin-sidebar': HTMLEnjinSidebarElement
-    'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement
-    'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement
-    'enjin-star-rating': HTMLEnjinStarRatingElement
-    'enjin-test-component': HTMLEnjinTestComponentElement
-  }
-
-  interface ElementTagNameMap {
-    'enjin-gallery': HTMLEnjinGalleryElement;
-    'enjin-organism': HTMLEnjinOrganismElement;
-    'enjin-pay-with-card': HTMLEnjinPayWithCardElement;
-    'enjin-sidebar-component': HTMLEnjinSidebarComponentElement;
-    'enjin-sidebar': HTMLEnjinSidebarElement;
-    'enjin-star-rating-scoped': HTMLEnjinStarRatingScopedElement;
-    'enjin-star-rating-shadow': HTMLEnjinStarRatingShadowElement;
-    'enjin-star-rating': HTMLEnjinStarRatingElement;
-    'enjin-test-component': HTMLEnjinTestComponentElement;
-  }
-
-
+declare module "@stencil/core" {
   export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
   }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+

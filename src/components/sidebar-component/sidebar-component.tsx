@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'enjin-sidebar-component',
@@ -40,11 +40,13 @@ export class EnjinSidebarComponent {
         <a href={`/organism/${this.component.tag}`}>
           {this.component.tag}
         </a>
-        {this.component.phases && Object.keys(this.component.phases).map((phaseName) =>
-          <a href={`/organism/${this.component.tag}/${phaseName}`}>
-            {this.component.phases[phaseName].name ? this.component.phases[phaseName].name : phaseName}
-          </a>
-        )}
+        <div class="component-phases">
+          {this.component.phases && Object.keys(this.component.phases).map((phaseName) =>
+            <a href={`/organism/${this.component.tag}/${phaseName}`}>
+              {this.component.phases[phaseName].name ? this.component.phases[phaseName].name : phaseName}
+            </a>
+          )}
+        </div>
       </div>
       
     ) : null;

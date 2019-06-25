@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Prop, State, h } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 
 
@@ -62,7 +62,7 @@ export class EnjinOrganism {
     return (
       <div class="organism-wrapper">
         <div>
-          {this.component ? h(this.component.tag, {...this.currentProps}) : null}
+          {this.component ? <this.component.tag {...this.currentProps} /> : null}
         </div>
         <div class="sidebar">
           {this.component.props.map(prop => 

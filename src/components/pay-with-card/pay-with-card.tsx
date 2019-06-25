@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Listen, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Listen, Prop, State, h } from "@stencil/core";
 
 @Component({
   tag: "enjin-pay-with-card",

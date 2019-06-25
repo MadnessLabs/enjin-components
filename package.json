@@ -4,6 +4,9 @@
   "description": "A set of components to make it easier to build apps",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "jsnext:main": "dist/esm/index.mjs",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
@@ -27,8 +30,8 @@
     "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
   "dependencies": {
-    "@stencil/core": "0.18.1",
-    "@stencil/router": "^0.3.3",
+    "@stencil/core": "~1.1.0",
+    "@stencil/router": "one",
     "slideout": "^1.0.1"
   },
   "devDependencies": {
@@ -58,5 +61,8 @@
   "bugs": {
     "url": "https://github.com/madnesslabs/enjin-components/issues"
   },
-  "homepage": "https://github.com/madnesslabs/enjin-components"
+  "homepage": "https://github.com/madnesslabs/enjin-components",
+  "jest": {
+    "preset": "@stencil/core/testing"
+  }
 }

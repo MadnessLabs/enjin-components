@@ -1,4 +1,4 @@
-import { Component, Prop } from "@stencil/core";
+import { Component, Prop, h } from "@stencil/core";
 
 @Component({
   tag: "enjin-sidebar",
@@ -11,7 +11,7 @@ export class Sidebar {
   render() {
     return <div>
       {this.components && this.components.length > 0
-      && this.components.map(component => h('enjin-sidebar-component', {component}))
+      && this.components.map(component => <enjin-sidebar-component component={component} />)
      }
     </div>;
   }

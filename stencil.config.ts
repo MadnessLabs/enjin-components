@@ -8,10 +8,11 @@ export const config: Config = {
     },
     {
       type: 'www',
-      serviceWorker: null
+      serviceWorker: null,
+      empty: false
     },
     {
-      type: 'docs'
+      type: 'docs-readme'
     },
     {
       type: "docs-json",
