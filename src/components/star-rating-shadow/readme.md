@@ -17,26 +17,20 @@
 
 ## Events
 
-| Event          | Description | Type                |
-| -------------- | ----------- | ------------------- |
-| `ftStarRating` |             | `CustomEvent<void>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `ftStarRating` |             | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `setCurrentRating(rating: any) => void`
+### `setCurrentRating(rating: any) => Promise<void>`
 
 
-
-#### Parameters
-
-| Name     | Type  | Description |
-| -------- | ----- | ----------- |
-| `rating` | `any` |             |
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

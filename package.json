@@ -2,7 +2,7 @@
   "name": "@madnesslabs/enjin-components",
   "version": "0.0.8",
   "description": "A set of components to make it easier to build apps",
-  "module": "dist/esm/index.js",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
@@ -15,7 +15,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "stencil build",
-    "dev": " stencil build --dev --watch --serve",
+    "dev": " stencil build --docs --dev --watch --serve",
+    "docs": " stencil build --docs",
     "start": "npm-run-all --parallel dev phases:watch",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
@@ -30,8 +31,9 @@
     "storybook": "start-storybook -p 9001 -c .storybook -s www"
   },
   "dependencies": {
-    "@stencil/core": "~1.1.0",
+    "@stencil/core": "^1.2.2",
     "@stencil/router": "one",
+    "marked": "^0.7.0",
     "slideout": "^1.0.1"
   },
   "devDependencies": {

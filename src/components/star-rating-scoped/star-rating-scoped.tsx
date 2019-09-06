@@ -28,7 +28,7 @@ export class EnjinStarRatingScoped {
   @State() currentRating: number;
 
   @Method()
-  setCurrentRating(rating: any) {
+  async setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);
   }
 

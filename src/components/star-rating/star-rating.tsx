@@ -57,7 +57,7 @@ export class EnjinStarRating {
    * Set the current rating
    */
   @Method()
-  setCurrentRating(rating: any) {
+  async setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);
   }
 

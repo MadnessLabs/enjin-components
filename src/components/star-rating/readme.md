@@ -17,26 +17,20 @@
 
 ## Events
 
-| Event             | Description | Type                |
-| ----------------- | ----------- | ------------------- |
-| `enjinStarRating` |             | `CustomEvent<void>` |
+| Event             | Description | Type               |
+| ----------------- | ----------- | ------------------ |
+| `enjinStarRating` |             | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `setCurrentRating(rating: any) => void`
+### `setCurrentRating(rating: any) => Promise<void>`
 
 Set the current rating
 
-#### Parameters
-
-| Name     | Type  | Description |
-| -------- | ----- | ----------- |
-| `rating` | `any` |             |
-
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 

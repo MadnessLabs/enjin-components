@@ -1,6 +1,7 @@
 import '@stencil/router';
 import { Component, Element, State, h } from "@stencil/core";
 import Slideout from "slideout";
+import marked from 'marked';
 
 import { docs } from '../../docs';
 
@@ -17,6 +18,8 @@ export class Gallery {
   
   @State()
   components: any = [];
+  @State()
+  currentDoc: string;
   
   toggleSidebar(event) {
     if (event) {
@@ -25,9 +28,24 @@ export class Gallery {
     this.slideout.toggle();
   }
 
+  viewDocs(event) {
+    if (event) {
+      event.preventDefault();
+    }
+    let docsMarkdown = '';
+    for(const component of this.components) {
+      if (window.location.pathname.split('/')[2] === component.tag) {
+        docsMarkdown = component.readme;
+        break;
+      }
+    }
+    this.currentDoc = marked(docsMarkdown);
+  }
+
   async getComponentPhases() {
     let promises = [];
     this.components.map((component, index) => {
+    this.components[index].url = `/organism/${component.tag}/:phase?`;
     promises.push(new Promise((resolve, reject) => {
         require([`${component.tag.replace(component.tag.split('-')[0]+'-', '')}.phases`], (phases) => {
           this.components[index].phases = phases.default;
@@ -67,10 +85,12 @@ export class Gallery {
             &#9776;
           </a>
           <h2>Enjin</h2>
+          <a class="docs-button" onClick={(event) => this.viewDocs(event)}>Docs</a>
         </header>
+        <div class="docs-panel" innerHTML={this.currentDoc} />
         <stencil-router id="router">
           {this.components.map((component) => 
-            <stencil-route url={`/organism/${component.tag}/:phase?`} component='enjin-organism' componentProps={{component}} />
+            <stencil-route url={component.url} component='enjin-organism' componentProps={{component}} />
           )}
         </stencil-router>
       </main>
