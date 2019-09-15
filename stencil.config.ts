@@ -11,7 +11,7 @@ export const config: Config = {
       serviceWorker: null
     },
     {
-      type: 'docs'
+      type: 'docs-readme'
     }
   ],
   preamble: '(C) Madness Labs https://MadnessLabs.net - MIT License',

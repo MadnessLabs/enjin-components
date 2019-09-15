@@ -1,4 +1,4 @@
-import { Component, Listen } from "@stencil/core";
+import { Component, Listen, h } from "@stencil/core";
 
 @Component({
   tag: "enjin-gallery",

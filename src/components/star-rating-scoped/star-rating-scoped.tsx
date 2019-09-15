@@ -3,10 +3,12 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from "@stencil/core";
 
 @Component({
@@ -27,12 +29,12 @@ export class EnjinStarRatingScoped {
   @State() currentRating: number;
 
   @Method()
-  setCurrentRating(rating: any) {
+  async setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);
   }
 
   @Watch("value")
-  onValueChange() {
+  async onValueChange() {
     this.currentRating = parseFloat(this.value);
   }
 
@@ -42,15 +44,6 @@ export class EnjinStarRatingScoped {
 
   componentDidLoad() {
     this.currentRating = parseFloat(this.value ? this.value : "0");
-  }
-
-  hostData() {
-    return {
-      class: this.disabled ? "star-rating is-disabled" : "star-rating",
-      style: {
-        "--star-rating-max": this.maxRating
-      }
-    };
   }
 
   onInput(event) {
@@ -66,22 +59,31 @@ export class EnjinStarRatingScoped {
   }
 
   render() {
-    return [...Array(this.maxRating)].map((_radio, index) => [
-      <label
-        class={
-          this.currentRating >= this.maxRating - index - 0.5
-            ? "star-active"
-            : null
-        }
+    return (
+      <Host
+        class={this.disabled ? "star-rating is-disabled" : "star-rating"}
+        style={{
+          "--star-rating-max": this.maxRating + ''
+        }}
       >
-        <input
-          type="radio"
-          name={this.name}
-          value={this.maxRating - index}
-          onInput={this.onInput.bind(this)}
-        />
-        &#9733;
-      </label>
-    ]);
+        {[...Array(this.maxRating)].map((_radio, index) => [
+          <label
+            class={
+              this.currentRating >= this.maxRating - index - 0.5
+                ? "star-active"
+                : null
+            }
+          >
+            <input
+              type="radio"
+              name={this.name}
+              value={this.maxRating - index}
+              onInput={this.onInput.bind(this)}
+            />
+            &#9733;
+          </label>
+        ])}
+      </Host>
+    );
   }
 }

@@ -30,18 +30,25 @@ Type: `Promise<void>`
 
 Expand organism to show preview frame and props info
 
-#### Parameters
-
-| Name      | Type                           | Description |
-| --------- | ------------------------------ | ----------- |
-| `options` | `{ scrollIntoView: boolean; }` |             |
-
 #### Returns
 
 Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Used by
+
+ - [enjin-gallery](../gallery)
+
+### Graph
+```mermaid
+graph TD;
+  enjin-gallery --> enjin-organism
+  style enjin-organism fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

@@ -6,7 +6,8 @@ import {
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from "@stencil/core";
 
 @Component({
@@ -56,12 +57,12 @@ export class EnjinStarRating {
    * Set the current rating
    */
   @Method()
-  setCurrentRating(rating: any) {
+  async setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);
   }
 
   @Watch("value")
-  onValueChange() {
+  async onValueChange() {
     this.currentRating = parseFloat(this.value);
   }
 

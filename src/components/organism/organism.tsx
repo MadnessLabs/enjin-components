@@ -1,4 +1,4 @@
-import { Component, Element, Listen, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'enjin-organism',
@@ -65,8 +65,8 @@ export class Organism {
   /**
    * Listen for hash change and show everything is hash is #all
    */
-  @Listen('window:hashchange')
-  onhashchange() {
+  @Listen('hashchange', {target: 'window'})
+  async onhashchange() {
     if (window.location.hash === '#all') {
       this.viewMore();
     }

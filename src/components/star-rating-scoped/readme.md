@@ -17,29 +17,36 @@
 
 ## Events
 
-| Event          | Description | Type                |
-| -------------- | ----------- | ------------------- |
-| `ftStarRating` |             | `CustomEvent<void>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `ftStarRating` |             | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `setCurrentRating(rating: any) => void`
+### `setCurrentRating(rating: any) => Promise<void>`
 
 
-
-#### Parameters
-
-| Name     | Type  | Description |
-| -------- | ----- | ----------- |
-| `rating` | `any` |             |
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Used by
+
+ - [enjin-gallery](../gallery)
+
+### Graph
+```mermaid
+graph TD;
+  enjin-gallery --> enjin-star-rating-scoped
+  style enjin-star-rating-scoped fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

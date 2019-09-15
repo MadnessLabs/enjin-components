@@ -6,7 +6,8 @@ import {
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from "@stencil/core";
 
 @Component({
@@ -39,12 +40,12 @@ export class EnjinStarRatingShadow {
   }
 
   @Method()
-  setCurrentRating(rating: any) {
+  async setCurrentRating(rating: any) {
     this.currentRating = parseFloat(rating);
   }
 
   @Watch("value")
-  onValueChange() {
+  async onValueChange() {
     this.currentRating = parseFloat(this.value);
   }
 
@@ -66,7 +67,6 @@ export class EnjinStarRatingShadow {
   }
 
   render() {
-    console.log(this.maxRating, this.currentRating);
     return [...Array(this.maxRating)].map((_radio, index) => [
       <label
         class={

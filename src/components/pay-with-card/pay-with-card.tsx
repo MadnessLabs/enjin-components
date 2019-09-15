@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Listen, Prop, State } from "@stencil/core";
+import { Component, Event, EventEmitter, Listen, Prop, State, h } from "@stencil/core";
 
 @Component({
   tag: "enjin-pay-with-card",
@@ -15,7 +15,7 @@ export class PayWithCard {
   @State() error: string;
 
   @Listen("submit")
-  onFormSubmit(event) {
+  async onFormSubmit(event) {
     event.preventDefault();
 
     this.stripe.createToken(this.card).then(result => {
