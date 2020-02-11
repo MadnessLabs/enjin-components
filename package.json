@@ -32,7 +32,7 @@
     "@storybook/addon-notes": "5.2.0",
     "@storybook/addon-viewport": "5.2.0",
     "@storybook/html": "5.2.0",
-    "@types/jest": "24.0.18",
+    "@types/jest": "24.0.25",
     "@types/stripe-v3": "^3.1.7",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
