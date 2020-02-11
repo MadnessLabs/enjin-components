@@ -1,49 +1,36 @@
-const fs = require("fs");
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
-const WriteFilePlugin = require("write-file-webpack-plugin");
 
-module.exports = async ({ config }) => {
-  config.entry.push(path.join(__dirname, "../dist/enjin.js"));
-  fs.readdirSync(
-    path.join(__dirname, "../dist/collection/components")
-  ).map(function(file) {
-    jsFilePath = path.join(
-      __dirname,
-      `../dist/collection/components/${file}/${file}.js`
-    );
-    try {
-      if (fs.existsSync(jsFilePath)) {
-        config.entry.push(jsFilePath);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+// Export a function. Accept the base config as the only param.
+module.exports = async ({ config, mode }) => {
+  // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
+  // You can change the configuration based on that.
+  // 'PRODUCTION' is used when building the static version of storybook.
+  config.entry.push('webpack-hot-middleware/client.js?reload=true');
+  config.mode = process.env.NODE_ENV || "development";
+  config.devServer = {
+    watchContentBase: true,
+    contentBase: path.join(__dirname, "src"),
+    historyApiFallback: true
+  };
 
-    cssFilePath = path.join(
-      __dirname,
-      `../dist/collection/components/${file}/${file}.css`
-    );
-    try {
-      if (fs.existsSync(cssFilePath)) {
-        config.entry.push(cssFilePath);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  config.module.rules[0].use[0].options.sourceType = "unambiguous";
+
+  config.module.rules.push({
+    test: /.\.stories\.js$/,
+    loaders: [require.resolve("@storybook/addon-storysource/loader")],
+    enforce: "pre"
   });
 
-  config.plugins.push(
-    new CopyPlugin([
-      {
-        from: "**/*",
-        to: "./",
-        context: "dist"
-      }
-    ])
-  );
+  config.module.rules.push({
+    test: /.\.stories\.js$/,
+    exclude: /(src|general-stories)/,
+    loader: require.resolve("raw-loader")
+  });
+  config.resolve.extensions.push(".stories.js");
 
-  config.plugins.push(new WriteFilePlugin());
+  config.resolve.alias = {
+    "@src": path.resolve(__dirname, "../dist/collection")
+  };
 
   return config;
 };

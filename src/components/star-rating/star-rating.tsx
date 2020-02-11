@@ -89,8 +89,7 @@ export class EnjinStarRating {
       <label
         class={
           this.currentRating >= this.maxRating - index - 0.5
-            ? "star-active"
-            : null
+            && "star-active"
         }
       >
         <input

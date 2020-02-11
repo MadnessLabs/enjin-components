@@ -4,7 +4,8 @@ export const config: Config = {
   namespace: 'Enjin',
   outputTargets:[
     {
-      type: 'dist'
+      type: 'dist',
+      esmLoaderPath: "../loader"
     },
     {
       type: 'www',
