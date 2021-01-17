@@ -35,6 +35,7 @@ export class EnjinStarRating {
    * The value of the rating input
    */
   @Prop() value: string;
+  @Prop() testEl: (result: string) => any;
 
   /**
    * The current rating set
@@ -83,9 +84,8 @@ export class EnjinStarRating {
     };
   }
 
-
   render() {
-    return [...Array(this.maxRating)].map((_radio, index) => [
+    return [...[...Array(this.maxRating)].map((_radio, index) => (
       <label
         class={
           this.currentRating >= this.maxRating - index - 0.5
@@ -100,7 +100,8 @@ export class EnjinStarRating {
           onInput={this.onInput.bind(this)}
         />
         &#9733;
+        
       </label>
-    ]);
+    )), this.testEl && typeof this.testEl === "function" && <div innerHTML={this.testEl("testing")} />];
   }
 }

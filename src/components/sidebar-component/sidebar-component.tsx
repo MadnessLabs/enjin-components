@@ -6,7 +6,7 @@ import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
   shadow: true
 })
 export class EnjinSidebarComponent {
-  @Event() enjinSetPhase: EventEmitter<any>;
+  @Event() enjinSetPreset: EventEmitter<any>;
 
   @Prop() component: {
     docs: string;
@@ -14,7 +14,7 @@ export class EnjinSidebarComponent {
     encapsulation: string;
     events: any[];
     methods: any[];
-    phases: any;
+    presets: any;
     props: {
       attr: string;
       default: any;
@@ -40,10 +40,10 @@ export class EnjinSidebarComponent {
         <a href={`/organism/${this.component.tag}`}>
           {this.component.tag}
         </a>
-        <div class="component-phases">
-          {this.component.phases && Object.keys(this.component.phases).map((phaseName) =>
-            <a href={`/organism/${this.component.tag}/${phaseName}`}>
-              {this.component.phases[phaseName].name ? this.component.phases[phaseName].name : phaseName}
+        <div class="component-presets">
+          {this.component.presets && Object.keys(this.component.presets).map((presetName) =>
+            <a href={`/organism/${this.component.tag}/${presetName}`}>
+              {this.component.presets[presetName].name ? this.component.presets[presetName].name : presetName}
             </a>
           )}
         </div>

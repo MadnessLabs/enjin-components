@@ -19,7 +19,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
-      phases: any;
+      presets: any;
       props: {
         attr: string;
         default: any;
@@ -53,7 +53,7 @@ export namespace Components {
       encapsulation: string;
       events: any[];
       methods: any[];
-      phases: any;
+      presets: any;
       props: {
         attr: string;
         default: any;
@@ -90,6 +90,7 @@ export namespace Components {
     * Set the current rating
     */
     'setCurrentRating': (rating: any) => Promise<void>;
+    'testEl': (result: string) => any;
     /**
     * The value of the rating input
     */
@@ -109,7 +110,13 @@ export namespace Components {
     'setCurrentRating': (rating: any) => Promise<void>;
     'value': string;
   }
-  interface EnjinTestComponent {}
+  interface EnjinTestComponent {
+    'array': any;
+    'boolean': boolean;
+    'fn': () => any;
+    'object': any;
+    'string': string;
+  }
 }
 
 declare global {
@@ -190,7 +197,7 @@ declare namespace LocalJSX {
       encapsulation: string;
       events: any[];
       methods: any[];
-      phases: any;
+      presets: any;
       props: {
         attr: string;
         default: any;
@@ -225,7 +232,7 @@ declare namespace LocalJSX {
       encapsulation: string;
       events: any[];
       methods: any[];
-      phases: any;
+      presets: any;
       props: {
         attr: string;
         default: any;
@@ -244,7 +251,7 @@ declare namespace LocalJSX {
       tag: string;
       usage: any;
     };
-    'onEnjinSetPhase'?: (event: CustomEvent<any>) => void;
+    'onEnjinSetPreset'?: (event: CustomEvent<any>) => void;
   }
   interface EnjinStarRating extends JSXBase.HTMLAttributes<HTMLEnjinStarRatingElement> {
     /**
@@ -260,6 +267,7 @@ declare namespace LocalJSX {
     */
     'name'?: string;
     'onEnjinStarRating'?: (event: CustomEvent<any>) => void;
+    'testEl'?: (result: string) => any;
     /**
     * The value of the rating input
     */
@@ -279,7 +287,13 @@ declare namespace LocalJSX {
     'onFtStarRating'?: (event: CustomEvent<any>) => void;
     'value'?: string;
   }
-  interface EnjinTestComponent extends JSXBase.HTMLAttributes<HTMLEnjinTestComponentElement> {}
+  interface EnjinTestComponent extends JSXBase.HTMLAttributes<HTMLEnjinTestComponentElement> {
+    'array'?: any;
+    'boolean'?: boolean;
+    'fn'?: () => any;
+    'object'?: any;
+    'string'?: string;
+  }
 
   interface IntrinsicElements {
     'enjin-gallery': EnjinGallery;

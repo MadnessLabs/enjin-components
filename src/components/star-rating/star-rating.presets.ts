@@ -9,7 +9,8 @@ export default {
         props: {
             maxRating: 10,
             value: 5,
-            disabled: true 
+            disabled: false,
+            testEl: (result) => `<h2><enjin-test-component></enjin-test-component>${result} test</h2>`
         }
     }
 };

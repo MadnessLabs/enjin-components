@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                          | Type      | Default     |
-| ----------- | ------------ | ------------------------------------ | --------- | ----------- |
-| `disabled`  | `disabled`   | Whether or not the field is disabled | `boolean` | `false`     |
-| `maxRating` | `max-rating` | The max available star rating        | `number`  | `5`         |
-| `name`      | `name`       | The name of the input                | `string`  | `"rating"`  |
-| `value`     | `value`      | The value of the rating input        | `string`  | `undefined` |
+| Property    | Attribute    | Description                          | Type                      | Default     |
+| ----------- | ------------ | ------------------------------------ | ------------------------- | ----------- |
+| `disabled`  | `disabled`   | Whether or not the field is disabled | `boolean`                 | `false`     |
+| `maxRating` | `max-rating` | The max available star rating        | `number`                  | `5`         |
+| `name`      | `name`       | The name of the input                | `string`                  | `"rating"`  |
+| `testEl`    | --           |                                      | `(result: string) => any` | `undefined` |
+| `value`     | `value`      | The value of the rating input        | `string`                  | `undefined` |
 
 
 ## Events

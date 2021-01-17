@@ -16,7 +16,7 @@ export class EnjinOrganism {
     encapsulation: string;
     events: any[];
     methods: any[];
-    phases: any;
+    presets: any;
     props: {
       attr: string;
       default: any;
@@ -38,12 +38,14 @@ export class EnjinOrganism {
   @Prop() match: MatchResults;
 
   @State() currentProps = {};
+  @State() currentPreset: any = {};
 
-  setPhase(phaseName: string) {
-    if (this.component.phases && this.component.phases[phaseName] && this.component.phases[phaseName].props) {
-      this.currentProps = {...this.component.phases[phaseName].props};
+  setPreset(presetName: string) {
+    if (this.component.presets && this.component.presets[presetName] && this.component.presets[presetName].props) {
+      this.currentPreset = this.component.presets[presetName];
+      this.currentProps = {...this.component.presets[presetName].props};
     } else {
-      this.currentProps = this.component.phases['default'] && this.component.phases['default'].props ? this.component.phases['default'].props : null;
+      this.currentProps = this.component.presets['default'] && this.component.presets['default'].props ? this.component.presets['default'].props : null;
     }
   }
 
@@ -53,8 +55,8 @@ export class EnjinOrganism {
   }
   
   componentDidLoad() {
-    if (this.match && this.match.params && this.match.params.phase) {
-      this.setPhase(this.match.params.phase);
+    if (this.match && this.match.params && this.match.params.preset) {
+      this.setPreset(this.match.params.preset);
     }
   }
 
@@ -62,7 +64,7 @@ export class EnjinOrganism {
     return (
       <div class="organism-wrapper">
         <div>
-          {this.component ? <this.component.tag {...this.currentProps} /> : null}
+          {this.component ? <this.component.tag {...this.currentProps} innerHTML={this.currentPreset.slot && typeof this.currentPreset.slot === "function" ? this.currentPreset.slot() : null} /> : null}
         </div>
         <div class="sidebar">
           {this.component.props.map(prop => 

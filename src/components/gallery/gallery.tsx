@@ -3,7 +3,7 @@ import { Component, Element, State, h } from "@stencil/core";
 import Slideout from "slideout";
 import marked from 'marked';
 
-import { docs } from '../../docs';
+import docs from '../../docs';
 
 @Component({
   tag: "enjin-gallery",
@@ -42,22 +42,24 @@ export class Gallery {
     this.currentDoc = marked(docsMarkdown);
   }
 
-  async getComponentPhases() {
+  async getComponentPresets() {
     let promises = [];
     this.components.map((component, index) => {
-    this.components[index].url = `/organism/${component.tag}/:phase?`;
+    this.components[index].url = `/organism/${component.tag}/:preset?`;
     promises.push(new Promise((resolve, reject) => {
-        require([`${component.tag.replace(component.tag.split('-')[0]+'-', '')}.phases`], (phases) => {
-          this.components[index].phases = phases.default;
-          resolve(phases.default);
+        const componentName = component.tag.replace(component.tag.split('-')[0]+'-', '');
+        require([`${componentName}/${componentName}.presets`], (presets) => {
+          console.log(presets);
+          this.components[index].presets = presets.default;
+          resolve(presets.default);
         }, () => {
-          console.log(`${component.tag} phases not found!`);
-          reject(`${component.tag} phases not found!`);
+          console.log(`${component.tag} presets not found!`);
+          reject(`${component.tag} presets not found!`);
         });
       }));
     });
 
-    const response = Promise.all(promises);
+    const response = await Promise.all(promises);
     this.components = [...this.components];
 
     return response;
@@ -71,7 +73,7 @@ export class Gallery {
       padding: 256,
       tolerance: 70
     });
-    await this.getComponentPhases();
+    await this.getComponentPresets();
   }
 
   render() {
