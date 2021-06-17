@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event       | Description                             | Type                                                                 |
-| ----------- | --------------------------------------- | -------------------------------------------------------------------- |
-| `enjinSort` | Fires when the column header is clicked | `CustomEvent<{ event: any; sort: { ["key"]?: "asc" \| "desc"; }; }>` |
+| Event       | Description                             | Type                                                             |
+| ----------- | --------------------------------------- | ---------------------------------------------------------------- |
+| `enjinSort` | Fires when the column header is clicked | `CustomEvent<{ event: any; sort: { key?: "asc" \| "desc"; }; }>` |
 
 
 ----------------------------------------------
